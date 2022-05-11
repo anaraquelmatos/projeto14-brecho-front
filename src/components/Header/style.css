@@ -1,0 +1,59 @@
+.header {
+    width: 100vw;
+    height: 130px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background: #C1F4E2;
+}
+
+.header .user {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 20px;
+    font-size: 25px;
+}
+
+.header .user p {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 12px;
+    letter-spacing: 0.1em;
+    color: #000000;
+}
+
+.header .user .spaceLogin{
+    padding-right: 60px;
+    padding-left: 5px;
+}
+
+.header .menu {
+    width: 364px;
+    height: 23px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.header .menu p {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 12px;
+    text-align: center;
+    letter-spacing: 0.2em;
+    color: #000000;
+}
+
+.header .logo h1 {
+    font-family: 'Italianno';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 50px;
+    text-align: center;
+    letter-spacing: 0.2em;
+    color: #A02B2B;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
