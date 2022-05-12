@@ -10,7 +10,7 @@ function Header() {
                     <ion-icon name="bag"></ion-icon>
                 </div>
                 <div className="logo">
-                    <h1>Conceito's Brechó</h1>
+                    <h1>CONCEITO</h1>
                 </div>
                 <nav>
                     <div className="menu">
