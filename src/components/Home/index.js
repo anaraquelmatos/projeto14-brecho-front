@@ -3,7 +3,6 @@ import { Slide } from "react-slideshow-image";
 import "./style.css";
 import send from "./../../assets/img/send.png";
 import "react-slideshow-image/dist/styles.css";
-import Header from "./../Header";
 import Footer from "./../Footer";
 
 function Home() {
