@@ -7,7 +7,27 @@ function Home() {
 
     return (
         <>
-            <Header />
+            <header>
+                <div className="header">
+                    <div className="user">
+                        <ion-icon name="person-circle-outline"></ion-icon>
+                        <p className="spaceLogin">Entrar</p>
+                        <ion-icon name="bag"></ion-icon>
+                    </div>
+                    <div className="logo">
+                        <h1>CONCEITO</h1>
+                    </div>
+                    <nav>
+                        <div className="menu">
+                            <p>FEMININO</p>
+                            <p>|</p>
+                            <p>MASCULINO</p>
+                            <p>|</p>
+                            <p>INFANTIL</p>
+                        </div>
+                    </nav>
+                </div>
+            </header>
             <main className="main-home">
                 <div className="home">
                     <img src="https://www.ab-in-den-urlaub.de/magazin/wp-content/uploads/2019/03/1554210734_Duty-free-shoppen-768x512.jpg" alt="Carousel" />
@@ -24,8 +44,8 @@ function Home() {
                             <p className="brand">Addidas Originals</p>
                             <p className="description">Tênis Lançamento</p>
                             <div className="prices">
-                            <p className="price-before">R$100,00</p>
-                            <p className="price">R$300,00</p>
+                                <p className="price-before">R$100,00</p>
+                                <p className="price">R$300,00</p>
                             </div>
                         </div>
                         <div className="product-description">
