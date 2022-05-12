@@ -1,6 +1,7 @@
 import "./style.css";
-import Header from "./../Header";
 import send from "./../../assets/img/send.png";
+import Header from "./../Header";
+import Footer from "./../Footer";
 
 function Home() {
 
@@ -75,6 +76,7 @@ function Home() {
                     </div>
                 </menu>
             </main>
+            <Footer />
         </>
     );
 }
