@@ -1,16 +1,43 @@
+import React, { useRef } from "react";
+import { Slide } from "react-slideshow-image";
 import "./style.css";
 import send from "./../../assets/img/send.png";
+import "react-slideshow-image/dist/styles.css";
 import Header from "./../Header";
 import Footer from "./../Footer";
 
 function Home() {
+
+    const slideImages = [
+        {
+            url: 'https://cdn.pixabay.com/photo/2016/03/23/08/34/woman-1274360_960_720.jpg',
+        },
+        {
+            url: 'https://cdn.pixabay.com/photo/2015/04/04/19/08/twenty-706886_960_720.jpg',
+        }
+    ];
+
+    const slideRef = useRef();
+
+    const properties = {
+        autoplay: true,
+        arrows: false,
+        duration: 8000,
+        transitionDuration: 600,
+    };
 
     return (
         <>
             <Header />
             <main className="main-home">
                 <div className="home">
-                    <img src="https://www.ab-in-den-urlaub.de/magazin/wp-content/uploads/2019/03/1554210734_Duty-free-shoppen-768x512.jpg" alt="Carousel" />
+                    <Slide ref={slideRef} {...properties}>
+                        {slideImages.map((slideImage, index) => (
+                            <div className="each-slide" key={index}>
+                                <img src={slideImage.url} alt="Courosel"/>
+                            </div>
+                        ))}
+                    </Slide>
                 </div>
                 <div className="main-infos">
                     <h3>Frete Grátis a partir de R$200</h3>
@@ -24,8 +51,8 @@ function Home() {
                             <p className="brand">Addidas Originals</p>
                             <p className="description">Tênis Lançamento</p>
                             <div className="prices">
-                            <p className="price-before">R$100,00</p>
-                            <p className="price">R$300,00</p>
+                                <p className="price-before">R$100,00</p>
+                                <p className="price">R$300,00</p>
                             </div>
                         </div>
                         <div className="product-description">
