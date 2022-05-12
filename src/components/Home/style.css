@@ -1,0 +1,88 @@
+.main-home .home {
+    width: 100vw;
+    height: 152px;
+    background: #7CC6AB;
+}
+
+.main-home .home img{
+    width: 100vw;
+    height: 152px;
+    bottom: 644px;
+}
+
+.main-home .main-infos {
+    width: 100%;
+    height: 39px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #FFFAFA;
+}
+
+.main-home .main-infos h3 {
+    padding-right: 7px;
+    font-family: 'Jomhuria';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 32px;
+    letter-spacing: 0.05em;
+    color: #000000;
+}
+
+.main-home .main-infos img {
+    width: 38px;
+    height: 23px;
+}
+
+.main-home .colored-band {
+    width: 100vw;
+    height: 18px;
+    margin-bottom: 10px;
+    background: #7CC6AB;
+}
+
+.main-home .products-brecho {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    background: #E7F8F2;
+}
+
+.main-home .products-brecho .product-description {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    font-family: Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.35;
+    background-color: #ffffff;
+}
+
+.main-home .products-brecho .product-description img {
+    width: 109px;
+    height: 142px;
+    border-radius: 8px 8px 0 0;
+}
+
+.main-home .products-brecho .product-description .brand {
+    padding-top: 5px;
+    font-weight: 700;
+    padding-left: 5px;
+}
+
+.main-home .products-brecho .product-description .description {
+    color: #4f4a4a;
+    font-weight: 700;
+    padding-left: 5px;
+}
+
+.main-home .products-brecho .product-description .price {
+    padding-top: 5px;
+    padding-left: 5px;
+    font-family: 'Josefin Sans';
+    letter-spacing: 0.05em;
+}
