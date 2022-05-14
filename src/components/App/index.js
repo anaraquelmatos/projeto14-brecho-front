@@ -5,6 +5,7 @@ import Home from "../Home";
 import SignIn from "../SignIn";
 import SignUp from "../SignUp";
 import Product from "../Product";
+import Shopping from "../Shopping";
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
                     <Route path="/product/:idProduct" element={<Product />} />
                     <Route path="/sign-in" element={<SignIn />} />
                     <Route path="/sign-up" element={<SignUp />} />
+                    <Route path="/shopping" element={<Shopping />} />
                 </Routes>
             </BrowserRouter>
         </UserContext.Provider>

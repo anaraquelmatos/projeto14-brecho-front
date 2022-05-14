@@ -1,0 +1,84 @@
+.shopping {
+    margin: 100px auto 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+.shopping h2 {
+    padding: 0 0 25px 30px;
+    font-family: 'Jomhuria';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 45px;
+    line-height: 32px;
+    letter-spacing: 0.05em;
+    color: #000000;
+}
+
+.shopping .item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 30px 15px;
+    padding: 10px 0;
+    border-top: 1px solid #B89E19;
+    border-bottom: 1px solid #B89E19;
+}
+
+.shopping .item p {
+    font-family: 'Josefin Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0.02em;
+    color: #000000;
+}
+
+.shopping .details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 30px;
+}
+
+.shopping .details p {
+    font-family: 'Catamaran';
+    font-style: normal;
+    font-size: 15px;
+    line-height: 25px;
+    letter-spacing: 0.02em;
+    color: #000000;
+}
+
+.shopping .details .item-name{
+    width: 115px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    word-wrap: break-word;
+}
+
+.shopping .details .qtd{
+    width: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Catamaran';
+    font-style: normal;
+    font-size: 15px;
+    line-height: 25px;
+    letter-spacing: 0.02em;
+    color: #000000;
+}
+
+.shopping .details .qtd button{
+    width: 20px;
+}
+
+.shopping .details .price{
+    width: 97px;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
