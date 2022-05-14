@@ -15,6 +15,7 @@
 }
 
 .header .user p {
+    font-family: 'Josefin Sans';
     font-weight: 400;
     font-size: 12px;
     line-height: 12px;
@@ -110,8 +111,9 @@
 }
 
 .main-home .products-brecho .product-description {
-    width: 160px;
-    height: 240px;
+    width: 180px;
+    height: 260px;
+    margin-left: 15px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -134,14 +136,14 @@
     border-radius: 8px 8px 0 0;
 }
 
-.main-home .products-brecho .product-description .brand {
+.main-home .products-brecho .product-description .item-name {
     padding-top: 5px;
-    font-weight: 700;
     padding-left: 5px;
+    padding-right: 5px;
     font-family: 'Catamaran';
     font-style: normal;
-    font-weight: 700;
-    font-size: 15px;
+    font-weight: bold;
+    font-size: 12px;
     line-height: 25px;
     letter-spacing: 0.02em;
     color: #000000;
@@ -150,13 +152,10 @@
 .main-home .products-brecho .product-description .description {
     font-weight: 700;
     padding-left: 5px;
-    padding-top: 5px;
-    font-weight: 700;
-    padding-left: 5px;
+    padding-top: 2px;
     font-family: 'Catamaran';
     font-style: normal;
-    font-weight: 400;
-    font-size: 15px;
+    font-size: 12px;
     line-height: 25px;
     letter-spacing: 0.02em;
     color: #707070;
@@ -165,7 +164,7 @@
 .main-home .products-brecho .product-description .price-before {
     padding-top: 5px;
     padding-left: 5px;
-    font-family: 'Chakra Petch';
+    font-family: 'Josefin Sans';
     font-style: normal;
     font-weight: 400;
     font-size: 15px;
@@ -178,10 +177,23 @@
 .main-home .products-brecho .product-description .price {
     padding-top: 5px;
     padding-left: 5px;
-    font-family: 'Chakra Petch';
+    font-family: 'Josefin Sans';
     font-style: normal;
     font-weight: 400;
     font-size: 15px;
     line-height: 20px;
     letter-spacing: 0.02em;
 }
+
+.main-home .home-female-products {
+    width: 350px;
+    display: flex;
+    overflow: scroll;
+}
+
+.main-home .products-brecho .home-female-products .product-description {
+    margin-left: 10px;
+    padding-bottom: 10px;
+}
+
+
