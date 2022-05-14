@@ -4,6 +4,9 @@ import "./style.css";
 import send from "./../../assets/img/send.png";
 import "react-slideshow-image/dist/styles.css";
 import Footer from "./../Footer";
+import { useState, useEffect } from 'react';
+import axios from "axios";
+import { Link } from "react-router-dom";
 
 function Home() {
 
@@ -25,13 +28,30 @@ function Home() {
         transitionDuration: 600,
     };
 
+    const [items, setItems] = useState([]);
+
+    useEffect(() => {
+        const promisse = axios.get("http://localhost:5000");
+        promisse.then(response => {
+            const { data } = response;
+            setItems(data);
+        })
+        promisse.catch(warning);
+    }, []);
+
+    function warning() {
+        alert("Não foi possível carregar os produtos")
+    }
+
     return (
         <>
             <header>
                 <div className="header">
                     <div className="user">
                         <ion-icon name="person-circle-outline"></ion-icon>
-                        <p className="spaceLogin">Entrar</p>
+                        <Link to={`/sign-in`}>
+                            <p className="spaceLogin">Entrar</p>
+                        </Link>
                         <ion-icon name="bag"></ion-icon>
                     </div>
                     <div className="logo">
@@ -53,7 +73,7 @@ function Home() {
                     <Slide ref={slideRef} {...properties}>
                         {slideImages.map((slideImage, index) => (
                             <div className="each-slide" key={index}>
-                                <img src={slideImage.url} alt="Courosel"/>
+                                <img src={slideImage.url} alt="Courosel" />
                             </div>
                         ))}
                     </Slide>
@@ -65,75 +85,35 @@ function Home() {
                 <div className="colored-band"></div>
                 <menu className="menu-home">
                     <div className="products-brecho">
-                        <div className="product-description">
-                            <img src="https://th.bing.com/th/id/R.b851c166bd8bfbdfbc44623fcdc48162?rik=SI7916ZetGQduA&riu=http%3a%2f%2fwww.ionline.com.br%2fwp-content%2fuploads%2f2013%2f05%2fmodelos-de-roupas-brancas-Reveillon-2014-6.jpg&ehk=S0N453a%2bpYvGMjHN6AkknjGApFPdrTWwi%2b3nq1pQfyw%3d&risl=&pid=ImgRaw&r=0" alt="Product" />
-                            <p className="brand">Addidas Originals</p>
-                            <p className="description">Tênis Lançamento</p>
-                            <div className="prices">
-                                <p className="price-before">R$100,00</p>
-                                <p className="price">R$300,00</p>
-                            </div>
-                        </div>
-                        <div className="product-description">
-                            <img src="https://th.bing.com/th/id/R.b851c166bd8bfbdfbc44623fcdc48162?rik=SI7916ZetGQduA&riu=http%3a%2f%2fwww.ionline.com.br%2fwp-content%2fuploads%2f2013%2f05%2fmodelos-de-roupas-brancas-Reveillon-2014-6.jpg&ehk=S0N453a%2bpYvGMjHN6AkknjGApFPdrTWwi%2b3nq1pQfyw%3d&risl=&pid=ImgRaw&r=0" alt="Product" />
-                            <p className="brand">Marca X</p>
-                            <p className="description">Descrição</p>
-                            <p className="price">R$100,00</p>
-                        </div>
-                        <div className="product-description">
-                            <img src="https://th.bing.com/th/id/R.b851c166bd8bfbdfbc44623fcdc48162?rik=SI7916ZetGQduA&riu=http%3a%2f%2fwww.ionline.com.br%2fwp-content%2fuploads%2f2013%2f05%2fmodelos-de-roupas-brancas-Reveillon-2014-6.jpg&ehk=S0N453a%2bpYvGMjHN6AkknjGApFPdrTWwi%2b3nq1pQfyw%3d&risl=&pid=ImgRaw&r=0" alt="Product" />
-                            <p className="brand">Marca X</p>
-                            <p className="description">Descrição</p>
-                            <p className="price">R$100,00</p>
-                        </div>
-                        <div className="product-description">
-                            <img src="https://th.bing.com/th/id/R.b851c166bd8bfbdfbc44623fcdc48162?rik=SI7916ZetGQduA&riu=http%3a%2f%2fwww.ionline.com.br%2fwp-content%2fuploads%2f2013%2f05%2fmodelos-de-roupas-brancas-Reveillon-2014-6.jpg&ehk=S0N453a%2bpYvGMjHN6AkknjGApFPdrTWwi%2b3nq1pQfyw%3d&risl=&pid=ImgRaw&r=0" alt="Product" />
-                            <p className="brand">Marca X</p>
-                            <p className="description">Descrição</p>
-                            <p className="price">R$100,00</p>
-                        </div>
-                        <div className="product-description">
-                            <img src="https://th.bing.com/th/id/R.b851c166bd8bfbdfbc44623fcdc48162?rik=SI7916ZetGQduA&riu=http%3a%2f%2fwww.ionline.com.br%2fwp-content%2fuploads%2f2013%2f05%2fmodelos-de-roupas-brancas-Reveillon-2014-6.jpg&ehk=S0N453a%2bpYvGMjHN6AkknjGApFPdrTWwi%2b3nq1pQfyw%3d&risl=&pid=ImgRaw&r=0" alt="Product" />
-                            <p className="brand">Marca X</p>
-                            <p className="description">Descrição</p>
-                            <p className="price">R$100,00</p>
-                        </div>
-                        <div className="product-description">
-                            <img src="https://th.bing.com/th/id/R.b851c166bd8bfbdfbc44623fcdc48162?rik=SI7916ZetGQduA&riu=http%3a%2f%2fwww.ionline.com.br%2fwp-content%2fuploads%2f2013%2f05%2fmodelos-de-roupas-brancas-Reveillon-2014-6.jpg&ehk=S0N453a%2bpYvGMjHN6AkknjGApFPdrTWwi%2b3nq1pQfyw%3d&risl=&pid=ImgRaw&r=0" alt="Product" />
-                            <p className="brand">Marca X</p>
-                            <p className="description">Descrição</p>
-                            <p className="price">R$100,00</p>
-                        </div>
-                        <div className="product-description">
-                            <img src="https://th.bing.com/th/id/R.b851c166bd8bfbdfbc44623fcdc48162?rik=SI7916ZetGQduA&riu=http%3a%2f%2fwww.ionline.com.br%2fwp-content%2fuploads%2f2013%2f05%2fmodelos-de-roupas-brancas-Reveillon-2014-6.jpg&ehk=S0N453a%2bpYvGMjHN6AkknjGApFPdrTWwi%2b3nq1pQfyw%3d&risl=&pid=ImgRaw&r=0" alt="Product" />
-                            <p className="brand">Marca X</p>
-                            <p className="description">Descrição</p>
-                            <p className="price">R$100,00</p>
-                        </div>
-                        <div className="product-description">
-                            <img src="https://th.bing.com/th/id/R.b851c166bd8bfbdfbc44623fcdc48162?rik=SI7916ZetGQduA&riu=http%3a%2f%2fwww.ionline.com.br%2fwp-content%2fuploads%2f2013%2f05%2fmodelos-de-roupas-brancas-Reveillon-2014-6.jpg&ehk=S0N453a%2bpYvGMjHN6AkknjGApFPdrTWwi%2b3nq1pQfyw%3d&risl=&pid=ImgRaw&r=0" alt="Product" />
-                            <p className="brand">Marca X</p>
-                            <p className="description">Descrição</p>
-                            <p className="price">R$100,00</p>
-                        </div>
-                        <div className="product-description">
-                            <img src="https://th.bing.com/th/id/R.b851c166bd8bfbdfbc44623fcdc48162?rik=SI7916ZetGQduA&riu=http%3a%2f%2fwww.ionline.com.br%2fwp-content%2fuploads%2f2013%2f05%2fmodelos-de-roupas-brancas-Reveillon-2014-6.jpg&ehk=S0N453a%2bpYvGMjHN6AkknjGApFPdrTWwi%2b3nq1pQfyw%3d&risl=&pid=ImgRaw&r=0" alt="Product" />
-                            <p className="brand">Marca X</p>
-                            <p className="description">Descrição</p>
-                            <p className="price">R$100,00</p>
-                        </div>
-                        <div className="product-description">
-                            <img src="https://th.bing.com/th/id/R.b851c166bd8bfbdfbc44623fcdc48162?rik=SI7916ZetGQduA&riu=http%3a%2f%2fwww.ionline.com.br%2fwp-content%2fuploads%2f2013%2f05%2fmodelos-de-roupas-brancas-Reveillon-2014-6.jpg&ehk=S0N453a%2bpYvGMjHN6AkknjGApFPdrTWwi%2b3nq1pQfyw%3d&risl=&pid=ImgRaw&r=0" alt="Product" />
-                            <p className="brand">Marca X</p>
-                            <p className="description">Descrição</p>
-                            <p className="price">R$100,00</p>
+                        <div className="home-female-products">
+                            {items.map(item => {
+                                if (item.categoria === "feminino") {
+                                    return (
+                                        <Link to={`/product/${item.id}`} key={item.categoria + item.itemName + item.id}>
+                                            <div className="product-description">
+                                                <img src={item.image} alt="Product" />
+                                                <p className="item-name">{item.itemName}</p>
+                                                <p className="description">{item.description}</p>
+                                                <div className="prices">
+                                                    <p className="price-before">R${item.storePrice}</p>
+                                                    <p className="price">R${item.price}</p>
+                                                </div>
+                                            </div>
+                                        </Link>
+                                    )
+                                }
+                            })}
+
                         </div>
                     </div>
                 </menu>
             </main>
             <Footer />
         </>
-    );
+    )
+
+
+
 }
 
 export default Home;
