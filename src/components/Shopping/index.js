@@ -31,18 +31,36 @@ function Shopping() {
                         <div className="item-name">
                             <p>Bolsa preta de Luxo</p>
                         </div>
-                            <div className="qtd">
-                                <button onClick={decreaseQuantity}>-</button>
-                                <p>{qtd}</p>
-                                <button onClick={increaseQuantity}>+</button>
-                            </div>
+                        <div className="qtd">
+                            <button onClick={decreaseQuantity}>-</button>
+                            <p>{qtd}</p>
+                            <button onClick={increaseQuantity}>+</button>
+                        </div>
                         <div className="price">
                             <p>R$1.000,00</p>
                         </div>
                     </div>
+                    <div className="details">
+                        <div className="item-name">
+                            <p>Bolsa preta de Luxo</p>
+                        </div>
+                        <div className="qtd">
+                            <button onClick={decreaseQuantity}>-</button>
+                            <p>{qtd}</p>
+                            <button onClick={increaseQuantity}>+</button>
+                        </div>
+                        <div className="price">
+                            <p>R$1.000,00</p>
+                        </div>
+                    </div>
+                    <div className="products-confirmation">
+                        <button>Continuar</button>
+                    </div>
                 </div>
             </main>
-            <Footer />
+            <div className="footer-fixed">
+                <Footer />
+            </div>
         </>
     );
 }

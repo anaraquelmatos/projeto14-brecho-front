@@ -1,5 +1,5 @@
 .shopping {
-    margin: 100px auto 200px;
+    margin: 100px auto 100px;
     display: flex;
     flex-direction: column;
 }
@@ -51,7 +51,7 @@
     color: #000000;
 }
 
-.shopping .details .item-name{
+.shopping .details .item-name {
     width: 115px;
     display: flex;
     justify-content: left;
@@ -59,7 +59,7 @@
     word-wrap: break-word;
 }
 
-.shopping .details .qtd{
+.shopping .details .qtd {
     width: 70px;
     display: flex;
     justify-content: space-between;
@@ -72,13 +72,41 @@
     color: #000000;
 }
 
-.shopping .details .qtd button{
+.shopping .details .qtd button {
     width: 20px;
 }
 
-.shopping .details .price{
+.shopping .details .price {
     width: 97px;
     display: flex;
     justify-content: right;
     align-items: center;
+}
+
+.shopping .products-confirmation {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.shopping .products-confirmation button {
+    width: 320px;
+    height: 46px;
+    background: #B89E19;
+    border-radius: 5px;
+    border: 1px solid #B89E19;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 23px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.footer-fixed {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
