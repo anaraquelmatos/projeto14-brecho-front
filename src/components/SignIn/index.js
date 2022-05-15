@@ -16,12 +16,14 @@ function SignIn() {
     })
 
     function login(event) {
+
+        event.preventDefault();
         const promisse = axios.post("http://localhost:5000/sign-in", userInfos);
         promisse.then(response => {
             const { data } = response;
             console.log(data);
             setUser({ token: data });
-            navigate("/");
+            navigate("/payment");
         })
         promisse.catch(() => {
             warning()

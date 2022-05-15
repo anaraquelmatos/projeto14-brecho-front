@@ -55,7 +55,7 @@ function Shopping() {
                         </div>
                     </div>
                     <div className="products-confirmation">
-                        <Link to={`/payment`}>
+                        <Link to={`/sign-in`}>
                             <button>Continuar</button>
                         </Link>
                     </div>
