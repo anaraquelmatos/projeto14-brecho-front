@@ -2,6 +2,7 @@ import "./style.css";
 import Header from "../Header";
 import Footer from "../Footer";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function Payment() {
 
@@ -18,16 +19,11 @@ function Payment() {
             <main>
                 <div className="payment">
                     <h2>Dados de envio</h2>
-                    <div className="address">
-                        <p>Cadastre o seu endereço</p>
-                    </div>
-                    <h2>Pagamento</h2>
-                    <div className="payment-conditions">
-                        <input type="text" placeholder="Nome do titular" onChange={e => setPayment({ ...payment, name: e.target.value })}></input>
-                        <input type="number" placeholder="Número do cartão" onChange={e => setPayment({ ...payment, number: e.target.value })}></input>
-                        <input type="number" placeholder="Validade" onChange={e => setPayment({ ...payment, validity: e.target.value })}></input>
-                        <input type="number" placeholder="CVV" minLength="3" maxLength="3" onChange={e => setPayment({ ...payment, cvv: e.target.value })}></input>
-                    </div>
+                    <Link to={`/address`}>
+                        <div className="address">
+                            <p>Cadastre o seu endereço</p>
+                        </div>
+                    </Link>
                     <h2>Seu pedido</h2>
                     <div className="order">
                         <div className="all-info">
@@ -42,9 +38,16 @@ function Payment() {
                         </div>
                         <p className="total">Total: R$1.020,00</p>
                     </div>
-                    <div className="products-payment">
-                        <button>Comprar</button>
-                    </div>
+                    <h2>Pagamento</h2>
+                    <form>
+                        <div className="payment-conditions">
+                            <input type="text" placeholder="Nome do titular" onChange={e => setPayment({ ...payment, name: e.target.value })}></input>
+                            <input type="number" placeholder="Número do cartão" onChange={e => setPayment({ ...payment, number: e.target.value })}></input>
+                            <input type="number" placeholder="Validade" onChange={e => setPayment({ ...payment, validity: e.target.value })}></input>
+                            <input type="number" placeholder="CVV" minLength="3" maxLength="3" onChange={e => setPayment({ ...payment, cvv: e.target.value })}></input>
+                            <button>Comprar</button>
+                        </div>
+                    </form>
                 </div>
             </main>
             <Footer />
