@@ -103,97 +103,33 @@
     background: #000000;
 }
 
-.main-home .products-brecho {
+.menu-home {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
+    flex-direction: column;
     align-items: center;
 }
 
-.main-home .products-brecho .product-description {
-    width: 180px;
-    height: 260px;
-    margin-left: 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    border-radius: 8px;
-    margin-bottom: 30px;
-    font-size: 16px;
-    line-height: 1.35;
-    background-color: #ffffff;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-    border-radius: 5px;
-}
-
-.main-home .products-brecho .prices {
-    display: flex;
-}
-
-.main-home .products-brecho .product-description img {
-    width: 160px;
-    height: 142px;
-    border-radius: 8px 8px 0 0;
-}
-
-.main-home .products-brecho .product-description .item-name {
-    padding-top: 5px;
-    padding-left: 5px;
-    padding-right: 5px;
-    font-family: 'Catamaran';
+.menu-home h4 {
+    width: 335px;
+    font-family: 'Josefin Sans';
     font-style: normal;
-    font-weight: bold;
-    font-size: 12px;
-    line-height: 25px;
-    letter-spacing: 0.02em;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 18px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #000000;
     color: #000000;
-}
-
-.main-home .products-brecho .product-description .description {
-    font-weight: 700;
-    padding-left: 5px;
-    padding-top: 2px;
-    font-family: 'Catamaran';
-    font-style: normal;
-    font-size: 12px;
-    line-height: 25px;
-    letter-spacing: 0.02em;
-    color: #707070;
-}
-
-.main-home .products-brecho .product-description .price-before {
-    padding-top: 5px;
-    padding-left: 5px;
-    font-family: 'Josefin Sans';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 15px;
-    line-height: 20px;
-    letter-spacing: 0.02em;
-    text-decoration: line-through;
-    color: #707070;
-}
-
-.main-home .products-brecho .product-description .price {
-    padding-top: 5px;
-    padding-left: 5px;
-    font-family: 'Josefin Sans';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 15px;
-    line-height: 20px;
-    letter-spacing: 0.02em;
-}
-
-.main-home .home-female-products {
-    width: 350px;
     display: flex;
-    overflow: scroll;
+    justify-content: left;
 }
 
-.main-home .products-brecho .home-female-products .product-description {
-    margin-left: 10px;
-    padding-bottom: 10px;
+.main-home .menu-home .home-products {
+    width: 335px;
+    display: flex;
+    align-items: center;
+    overflow-x: scroll;
 }
+
 
 

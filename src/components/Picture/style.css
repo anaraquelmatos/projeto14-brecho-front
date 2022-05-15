@@ -1,0 +1,101 @@
+.picture {
+    width: 160px;
+    height: 240px;
+    margin-left: 15px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.picture .picture-img {
+    position: absolute;
+    top: 5px !important;
+    width: 100% !important;
+    height: 142px;
+    z-index: 1;
+}
+
+.picture img {
+    height: 142px !important;
+    width: 100% !important;
+    border-radius: 8px 8px 0 0;
+}
+
+.picture .item-name {
+    position: absolute;
+    top: 150px;
+    left: 5px;
+    right: 5px;
+    z-index: 2;
+    font-family: 'Catamaran';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0.02em;
+    color: #000000;
+}
+
+.picture .picture-item-discount {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 25px;
+    height: 25px;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #B89E19;
+    border-radius: 0px 8px 0 0;
+}
+
+.picture .picture-item-discount p {
+    font-family: 'Catamaran';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 12px;
+    letter-spacing: 0.02em;
+    color: #000000;
+}
+
+.picture .prices {
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    width: 130px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.picture .prices .price-before {
+    font-family: 'Josefin Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 20px;
+    letter-spacing: 0.02em;
+    text-decoration: line-through;
+    color: #707070;
+}
+
+.picture .prices .price {
+    font-family: 'Josefin Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 20px;
+    letter-spacing: 0.02em;
+    color: #000000;
+}
+
+
+
+
+
