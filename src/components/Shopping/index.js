@@ -2,6 +2,7 @@ import "./style.css";
 import Header from "../Header";
 import Footer from "../Footer";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function Shopping() {
     const [qtd, setQtd] = useState(0);
@@ -54,7 +55,9 @@ function Shopping() {
                         </div>
                     </div>
                     <div className="products-confirmation">
-                        <button>Continuar</button>
+                        <Link to={`/payment`}>
+                            <button>Continuar</button>
+                        </Link>
                     </div>
                 </div>
             </main>
