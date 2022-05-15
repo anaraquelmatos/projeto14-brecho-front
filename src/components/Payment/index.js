@@ -1,8 +1,10 @@
 import "./style.css";
 import Header from "../Header";
 import Footer from "../Footer";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
+import UserContext from "../../UserContext";
+import SignIn from "../SignIn";
 
 function Payment() {
 
@@ -12,8 +14,9 @@ function Payment() {
         validity: "",
         cvv: '',
     })
+    const { user } = useContext(UserContext);
 
-    return (
+    return user !== null ? (
         <>
             <Header />
             <main>
@@ -52,7 +55,10 @@ function Payment() {
             </main>
             <Footer />
         </>
-    );
+    ) :
+        (
+            <SignIn />
+        );
 }
 
 export default Payment
