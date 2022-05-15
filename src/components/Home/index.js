@@ -48,11 +48,13 @@ function Home() {
             <header>
                 <div className="header">
                     <div className="user">
-                        <ion-icon name="person-circle-outline"></ion-icon>
                         <Link to={`/sign-in`}>
-                            <p className="spaceLogin">Entrar</p>
+                            <ion-icon name="person-circle-outline"></ion-icon>
                         </Link>
+                        <p className="spaceLogin">Entrar</p>
+                        <div>
                         <ion-icon name="bag"></ion-icon>
+                        </div>
                     </div>
                     <div className="logo">
                         <h1>CONCEITO</h1>

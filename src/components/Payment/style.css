@@ -1,0 +1,133 @@
+.payment {
+    margin: 70px auto 100px;
+}
+
+.payment .address {
+    width: 300px;
+    height: 150px;
+    display: flex;
+    margin: 0 auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px dashed #B89E19;
+    border-radius: 5px;
+}
+
+.payment h2 {
+    padding: 25px 0 15px 30px;
+    font-family: 'Jomhuria';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 35px;
+    line-height: 32px;
+    letter-spacing: 0.05em;
+    color: #000000;
+}
+
+.payment .address p {
+    font-family: 'Josefin Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0.02em;
+    color: #000000;
+}
+
+.payment .payment-conditions {
+    width: 335px;
+    margin: 0 auto;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+}
+
+.payment .payment-conditions input {
+    width: 320px;
+    height: 58px;
+    margin-bottom: 13px;
+    background: #FFFFFF;
+    border-radius: 5px;
+    border: 1px solid #F2EDED;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+    color: #000000;
+    padding-left: 15px;
+}
+
+.payment .payment-conditions input::placeholder {
+    color: #b8afaf;
+    font-family: 'Josefin Sans';
+}
+
+.payment .order {
+    width: 335px;
+    display: flex;
+    padding: 15px 15px;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin: 0 auto 30px;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+    font-family: 'Josefin Sans';
+}
+
+.payment .order .all-info {
+    margin-bottom: 20px;
+}
+
+.payment .total {
+    padding-top: 10px;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.payment .order img {
+    width: 40px;
+}
+
+.payment .order p {
+    padding-bottom: 10px;
+}
+
+.payment .order .photo-name {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.payment .order .photo-name p {
+    word-wrap: break-word;
+}
+
+.payment .order .photo-name img {
+    padding-right: 5px;
+}
+
+.payment .products-payment {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.payment .products-payment button {
+    width: 320px;
+    height: 46px;
+    background: #B89E19;
+    border-radius: 5px;
+    border: 1px solid #B89E19;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 23px;
+    text-align: center;
+    color: #FFFFFF;
+}
