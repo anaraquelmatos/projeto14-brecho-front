@@ -7,16 +7,16 @@ import "./style.css";
 function Footer() {
     return (
         <>
-            <footer className="principal-footer">
-                <div className="footer">
-                    <p>Contate-nos |</p>
-                    <div className="icons">
-                        <ion-icon name="logo-instagram"></ion-icon>
-                        <ion-icon name="logo-facebook"></ion-icon>
-                        <ion-icon name="mail-outline"></ion-icon>
-                    </div>
-                </div>
+            <footer>
                 <div className="home-footer">
+                    <div className="footer">
+                        <p>Redes |</p>
+                        <div className="icons">
+                            <ion-icon name="logo-instagram"></ion-icon>
+                            <ion-icon name="logo-facebook"></ion-icon>
+                            <ion-icon name="mail-outline"></ion-icon>
+                        </div>
+                    </div>
                     <div className="logos-svg">
                         <img src={pix} alt="pix"></img>
                         <img src={visa} alt="visa"></img>
