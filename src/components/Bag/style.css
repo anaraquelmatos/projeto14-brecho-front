@@ -1,0 +1,48 @@
+
+.details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 30px;
+}
+
+.details p {
+    font-family: 'Catamaran';
+    font-style: normal;
+    font-size: 15px;
+    line-height: 25px;
+    letter-spacing: 0.02em;
+    color: #000000;
+}
+
+.details .item-name {
+    width: 115px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    word-wrap: break-word;
+}
+
+.details .qtd {
+    width: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Catamaran';
+    font-style: normal;
+    font-size: 15px;
+    line-height: 25px;
+    letter-spacing: 0.02em;
+    color: #000000;
+}
+
+.details .qtd button {
+    width: 20px;
+}
+
+.details .price {
+    width: 97px;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
