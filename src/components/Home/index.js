@@ -67,13 +67,17 @@ function Home() {
                                 <p>FEMININO</p>
                             </Link>
                             <p>|</p>
-                            <p>MASCULINO</p>
+                            <Link to={`/masculine`}>
+                                <p>MASCULINO</p>
+                            </Link>
                             <p>|</p>
-                            <p>INFANTIL</p>
+                            <Link to={`/childish`}>
+                                <p>INFANTIL</p>
+                            </Link>
                         </div>
                     </nav>
                 </div>
-            </header>
+            </header >
             <main className="main-home">
                 <div className="home">
                     <Slide ref={slideRef} {...properties}>
