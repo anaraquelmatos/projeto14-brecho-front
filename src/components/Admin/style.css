@@ -1,0 +1,53 @@
+.admin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 62px;
+}
+
+.admin form .admin-form{
+    margin-top: 62px;
+    width: 335px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+}
+
+.admin form .admin-form input {
+    width: 320px;
+    height: 58px;
+    margin-top: 13px;
+    margin-bottom: 13px;
+    background: #FFFFFF;
+    border-radius: 5px;
+    border: 1px solid #F2EDED;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+    color: #000000;
+    padding-left: 15px;
+}
+
+.admin .admin-form input::placeholder {
+    color: #6e6a6a;
+    font-family: 'Josefin Sans';
+}
+
+.admin form .admin-form button {
+    width: 320px;
+    height: 46px;
+    margin-bottom: 13px;
+    background: #B89E19;
+    border-radius: 5px;
+    border: 1px solid #B89E19;;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 23px;
+    text-align: center;
+    color: #FFFFFF;
+}
