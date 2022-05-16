@@ -21,9 +21,12 @@ function SignIn() {
         const promisse = axios.post("http://localhost:5000/sign-in", userInfos);
         promisse.then(response => {
             const { data } = response;
-            console.log(data);
             setUser({ token: data });
-            navigate("/payment");
+            if (userInfos.email === "admin@gmail.com") {
+                navigate("/admin");
+            } else {
+                navigate("/payment");
+            }
         })
         promisse.catch(() => {
             warning()

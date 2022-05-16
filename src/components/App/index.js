@@ -9,8 +9,9 @@ import Shopping from "../Shopping";
 import Payment from "../Payment";
 import Address from "../Address";
 import Female from "../Female";
-import Male from "../Male";
 import Childish from "../Childish"
+import Male from "../Male";
+import Admin from "../Admin";
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
                     <Route path="/" element={<Home />} />
                     <Route path="/product/:idProduct" element={<Product />} />
                     <Route path="/sign-in" element={<SignIn />} />
+                    <Route path="/admin" element={<Admin />} />
                     <Route path="/sign-up" element={<SignUp />} />
                     <Route path="/shopping" element={<Shopping />} />
                     <Route path="/payment" element={<Payment />} />
