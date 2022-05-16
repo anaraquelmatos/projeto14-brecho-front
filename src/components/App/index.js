@@ -8,6 +8,7 @@ import Product from "../Product";
 import Shopping from "../Shopping";
 import Payment from "../Payment";
 import Address from "../Address";
+import Female from "../Female";
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
                     <Route path="/shopping" element={<Shopping />} />
                     <Route path="/payment" element={<Payment />} />
                     <Route path="/address" element={<Address />} />
+                    <Route path="/feminine" element={<Female />} />
                 </Routes>
             </BrowserRouter>
         </UserContext.Provider>
