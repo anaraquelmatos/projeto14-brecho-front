@@ -2,7 +2,7 @@ import "./style.css";
 import Header from "../Header";
 import Footer from "../Footer";
 import { useState, useContext, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import UserContext from "../../UserContext";
 import axios from "axios";
 
@@ -21,6 +21,8 @@ function Payment() {
 
     const [count, setCount] = useState(null);
 
+    const navigate = useNavigate();
+
     const config = {
         headers: { Authorization: `Bearer ${user.token}` }
     };
@@ -35,6 +37,12 @@ function Payment() {
         })
         promisse.catch(console.log("endereço não encontrado"));
     }, [user]);
+
+    function buy(event){
+        event.preventDefault();
+        alert("Compra realizada com sucesso!");
+        navigate("/")
+    }
 
     return address.length === 0 ? (
         <>
@@ -104,13 +112,13 @@ function Payment() {
                             <p className="total">Total: R$1.020,00</p>
                         </div>
                         <h2>Pagamento</h2>
-                        <form>
+                        <form onSubmit={buy}>
                             <div className="payment-conditions">
                                 <input type="text" placeholder="Nome do titular" onChange={e => setPayment({ ...payment, name: e.target.value })}></input>
                                 <input type="number" placeholder="Número do cartão" onChange={e => setPayment({ ...payment, number: e.target.value })}></input>
                                 <input type="number" placeholder="Validade" onChange={e => setPayment({ ...payment, validity: e.target.value })}></input>
                                 <input type="number" placeholder="CVV" minLength="3" maxLength="3" onChange={e => setPayment({ ...payment, cvv: e.target.value })}></input>
-                                <button>Comprar</button>
+                                <button type="submit">Comprar</button>
                             </div>
                         </form>
                     </div>

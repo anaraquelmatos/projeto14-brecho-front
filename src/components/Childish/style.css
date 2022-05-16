@@ -1,0 +1,28 @@
+.childish-clothes {
+    width: 100%;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.childish-clothes h2 {
+    width: 335px;
+    font-family: 'Josefin Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 18px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #000000;
+    color: #000000;
+    display: flex;
+    justify-content: left;
+}
+
+.childish-clothes .home-childish-products {
+    width: 335px;
+    display: flex;
+    overflow-x: scroll;
+}

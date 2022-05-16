@@ -9,6 +9,8 @@ import Shopping from "../Shopping";
 import Payment from "../Payment";
 import Address from "../Address";
 import Female from "../Female";
+import Male from "../Male";
+import Childish from "../Childish"
 
 function App() {
 
@@ -26,6 +28,8 @@ function App() {
                     <Route path="/payment" element={<Payment />} />
                     <Route path="/address" element={<Address />} />
                     <Route path="/feminine" element={<Female />} />
+                    <Route path="/masculine" element={<Male />} />
+                    <Route path="/childish" element={<Childish />} />
                 </Routes>
             </BrowserRouter>
         </UserContext.Provider>
