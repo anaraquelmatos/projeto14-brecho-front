@@ -1,6 +1,11 @@
+footer {
+    margin: 0px;
+}
+
 .footer {
     width: 300px;
     height: 100px;
+    margin-bottom: 0px;
     display: flex;
     justify-content: flex-start;
     align-items: center;

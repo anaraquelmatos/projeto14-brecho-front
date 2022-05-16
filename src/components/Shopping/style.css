@@ -35,54 +35,6 @@
     color: #000000;
 }
 
-.shopping .details {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0 30px;
-}
-
-.shopping .details p {
-    font-family: 'Catamaran';
-    font-style: normal;
-    font-size: 15px;
-    line-height: 25px;
-    letter-spacing: 0.02em;
-    color: #000000;
-}
-
-.shopping .details .item-name {
-    width: 115px;
-    display: flex;
-    justify-content: left;
-    align-items: center;
-    word-wrap: break-word;
-}
-
-.shopping .details .qtd {
-    width: 70px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-family: 'Catamaran';
-    font-style: normal;
-    font-size: 15px;
-    line-height: 25px;
-    letter-spacing: 0.02em;
-    color: #000000;
-}
-
-.shopping .details .qtd button {
-    width: 20px;
-}
-
-.shopping .details .price {
-    width: 97px;
-    display: flex;
-    justify-content: right;
-    align-items: center;
-}
-
 .shopping .products-confirmation {
     margin: 20px 0;
     display: flex;
@@ -109,4 +61,33 @@
     left: 0;
     right: 0;
     bottom: 0;
+}
+
+.bag-no-products {
+    width: 100%;
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.no-products {
+    width: 300px;
+    height: 150px;
+    margin-top: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px dashed #B89E19;
+    border-radius: 5px;
+}
+
+.no-products p {
+    width: 250px;
+    font-family: 'Josefin Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0.02em;
+    color: #000000;
 }

@@ -62,75 +62,21 @@
 }
 
 .product .colors {
-    width: 100%;
+    width: 300px;
     height: 35px;
     margin-top: 15px;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
-}
-
-.product .colors .white {
-    width: 26px;
-    height: 26px;
-    border-radius: 5px;
-    background-color: #ffffff;
-    border: 1px solid #ffffff;
-}
-
-.product .colors .black {
-    width: 26px;
-    height: 26px;
-    border-radius: 5px;
-    background-color: #000000;
-    border: 1px solid #000000;
-}
-
-
-.product .colors .blue {
-    width: 26px;
-    height: 26px;
-    border-radius: 5px;
-    background-color: blue;
-    border: 1px solid blue;
-}
-
-.product .colors .red {
-    width: 26px;
-    height: 26px;
-    border-radius: 5px;
-    background-color: red;
-    border: 1px solid red;
 }
 
 .product .lenght {
     width: 300px;
-    height: 40px;
+    height: 60px;
     margin-top: 15px;
     margin-bottom: 10px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
 }
-
-.product .lenght button {
-    width: 40px;
-    height: 35px;
-    font-family: 'Josefin Sans';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 18px;
-    margin-top: 30px;
-    border-radius: 10px;
-    color: #000000;
-    display: flex; 
-    justify-content: center;
-    align-items: center;
-    background-color: #ffffff;
-    border: 1px solid #000000;
-}
-
 
 .product .product-form .add-product {
     width: 300px;
@@ -138,7 +84,7 @@
     margin-top: 25px;
     background: #B89E19;
     border-radius: 5px;
-    border: 1px solid #B89E19;;
+    border: 1px solid #B89E19;
     font-style: normal;
     font-weight: 700;
     font-size: 20px;
