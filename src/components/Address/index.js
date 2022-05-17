@@ -33,9 +33,7 @@ function Address() {
         event.preventDefault();
 
         const promisse = axios.put("http://localhost:5000/address", address, config);
-        promisse.then(response => {
-            const { data } = response;
-            console.log(data);
+        promisse.then(() => {
             navigate(`/payment`);
         });
         promisse.catch(() => {

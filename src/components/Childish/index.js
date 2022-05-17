@@ -38,7 +38,7 @@ function Childish() {
                 <div className="home-childish-products">
                     {items.filter(item => item.category === "infantil" && item.discount > 0).map(item => {
                         return (
-                            <Link to={`/product/${item.id}`} key={item.category + item.itemName + item.id}>
+                            <Link to={`/product/${item.idp}`} key={item.category + item.itemName + item.idp}>
                                 <Picture
                                     image={item.image}
                                     itemName={item.itemName}
@@ -54,7 +54,7 @@ function Childish() {
                 <div className="home-childish-products">
                     {items.filter(item => item.category === "infantil" && item.type === "camisa").map(item => {
                         return (
-                            <Link to={`/product/${item.id}`} key={item.category + item.itemName + item.id}>
+                            <Link to={`/product/${item.idp}`} key={item.category + item.itemName + item.idp}>
                                 <Picture
                                     image={item.image}
                                     itemName={item.itemName}
@@ -70,7 +70,7 @@ function Childish() {
                 <div className="home-childish-products">
                     {items.filter(item => item.category === "infantil" && item.type === "bolsa").map(item => {
                         return (
-                            <Link to={`/product/${item.id}`} key={item.category + item.itemName + item.id}>
+                            <Link to={`/product/${item.idp}`} key={item.category + item.itemName + item.idp}>
                                 <Picture
                                     image={item.image}
                                     itemName={item.itemName}
@@ -86,7 +86,7 @@ function Childish() {
                 <div className="home-childish-products">
                     {items.filter(item => item.category === "infantil" && item.type === "sapato").map(item => {
                         return (
-                            <Link to={`/product/${item.id}`} key={item.category + item.itemName + item.id}>
+                            <Link to={`/product/${item.idp}`} key={item.category + item.itemName + item.idp}>
                                 <Picture
                                     image={item.image}
                                     itemName={item.itemName}

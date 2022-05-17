@@ -21,7 +21,7 @@ function Color(props) {
         return (
             <Div borderColor={color} color={color} onClick={() => {
                 setColorAvailable(false)
-                setItemInformation({...itemInformation, color: color,})
+                setItemInformation({...itemInformation, color: color})
                 }}>
             </Div>
         )

@@ -33,7 +33,6 @@ function Shopping() {
                             <p>Quantidade</p>
                             <p>Preço</p>
                         </div>
-                        {console.log(myObj)}
                         {storage.map((item) => {
                             return (
                                 <Bag itemName={item.itemName} price={item.price} />

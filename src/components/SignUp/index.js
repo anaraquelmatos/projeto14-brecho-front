@@ -21,9 +21,7 @@ function SignUp() {
         event.preventDefault();
         setLoad(true);
         const promisse = axios.post("http://localhost:5000/sign-up", userInfos);
-        promisse.then(response => {
-            const { data } = response;
-            console.log(data);
+        promisse.then(() => {
             setLoad(false);
             navigate("/");
         });

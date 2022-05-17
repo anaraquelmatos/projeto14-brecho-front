@@ -21,65 +21,71 @@ function Product() {
         itemName: '',
         color: "",
         size: "",
-        price: ''
+        price: '',
+        discount: '',
+        image: '',
+        description: ''
     });
 
     useEffect(() => {
         const promisse = axios.get(`http://localhost:5000/product/${idProduct}`);
         promisse.then(response => {
             const { data } = response;
-            setItems(data);
-            setItemInformation({ ...itemInformation, itemName: data.register.itemName, price: data.register.price })
-            console.log(data.id);
+            setItems([...items, data]);
+            setItemInformation({...itemInformation, itemName: data.itemName, price: data.price, discount: data.discount,
+            image: data.image, description: data.description});
+            console.log(itemInformation.discount)
         })
         promisse.catch(warning);
-    }, [idProduct, itemInformation]);
+    }, [idProduct, items.itemName]);
 
     function warning() {
-        alert("Não foi possível carregar o produto")
+        alert("Não foi possível carregar o produto");
     }
 
+    console.log(itemInformation.discount)
     return items.length !== 0 ? (
         <>
             <Header />
             <section className="product">
-                <img src={items.register.image} alt="produto"></img>
-                <h2>{items.register.itemName}</h2>
+                <img src={itemInformation.image} alt="produto"></img>
+                <h2>{items.itemName}</h2>
                 <div className="product-form">
                     <div className="all-colors">
-                        <h2>Cores disponíveis:</h2>
+                        <h2>Cor disponível:</h2>
                         <div className="colors">
                             {items.map(item => {
                                 return (
-                                    <Color color={item.resgister.color} itemInformation={itemInformation} setItemInformation={setItemInformation} />
+                                    <Color key={item.idp + item.color + item.itemName} color={item.color} itemInformation={itemInformation} setItemInformation={setItemInformation} />
                                 );
                             })}
                         </div>
                     </div>
-                    <h2>Tamanhos disponíveis:</h2>
+                    <h2>Tamanho disponível:</h2>
                     <div className="lenght">
                         {items.map(item => {
                             return (
-                                <Sizes size={item.register.size} itemInformation={itemInformation} setItemInformation={setItemInformation} />
+                                <Sizes key={item.idp + item.size + item.itemName} size={item.size} itemInformation={itemInformation} setItemInformation={setItemInformation} />
                             );
                         })}
 
                     </div>
                     <h2>Descrição:</h2>
                     <div className="item-description">
-                        <p>{items.register.description}</p>
+                        <p>{itemInformation.description}</p>
                     </div>
                     <h2>Valor:</h2>
                     <div className="item-value">
                         <div className="item-price">
                             <div className="price-tag">
-                                <h3 >R$ {items.register.price}</h3>
+                                <h3 >R$ {itemInformation.price}</h3>
                             </div>
                             <div className="price-discount">
-                                <h3>R$ {items.register.price - (items.register.price * items.register.discount) / 100}</h3>
+                                {console.log(itemInformation.discount)}
+                                <h3>R$ {itemInformation.price - (itemInformation.price * itemInformation.discount) / 100}</h3>
                             </div>
                         </div>
-                        <p>ou em até <strong>10x</strong> de <strong>R$ {(items.register.price - (items.register.price * items.register.discount) / 100) / 10}</strong> sem juros no cartão</p>
+                        <p>ou em até <strong>10x</strong> de <strong>R$ {(itemInformation.price - (itemInformation.price * itemInformation.discount) / 100) / 10}</strong> sem juros no cartão</p>
                     </div>
                     <button className="add-product" onClick={() => {
                         if (localStorage.getItem(key) === null) {

@@ -32,10 +32,8 @@ function Payment() {
         promisse.then(response => {
             const { data } = response;
             setAddress(data);
-            console.log(data)
             setCount(count + 1);
         })
-        promisse.catch(console.log("endereço não encontrado"));
     }, [user, count, payment]);
 
     function buy(event){
