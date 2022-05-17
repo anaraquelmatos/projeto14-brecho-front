@@ -25,13 +25,12 @@ function Product() {
     });
 
     useEffect(() => {
-        const promisse = axios.get(`http://localhost:5000/product/${idProduct}`,);
-        console.log(idProduct, "oioi")
+        const promisse = axios.get(`http://localhost:5000/product/${idProduct}`);
         promisse.then(response => {
             const { data } = response;
             setItems(data);
             setItemInformation({ ...itemInformation, itemName: data.register.itemName, price: data.register.price })
-            console.log(data)
+            console.log(data.id);
         })
         promisse.catch(warning);
     }, [idProduct, itemInformation]);
@@ -39,8 +38,6 @@ function Product() {
     function warning() {
         alert("Não foi possível carregar o produto")
     }
-
-    console.log(itemInformation)
 
     return items.length !== 0 ? (
         <>
@@ -85,7 +82,6 @@ function Product() {
                         <p>ou em até <strong>10x</strong> de <strong>R$ {(items.register.price - (items.register.price * items.register.discount) / 100) / 10}</strong> sem juros no cartão</p>
                     </div>
                     <button className="add-product" onClick={() => {
-                        console.log(itemInformation)
                         if (localStorage.getItem(key) === null) {
                             localStorage.setItem(key, JSON.stringify(itemInformation));
                         } else {

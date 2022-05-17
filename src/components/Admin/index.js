@@ -54,9 +54,9 @@ function Admin() {
                         <input type="text" placeholder="Tipo" onChange={e => setAdmin({ ...admin, type: e.target.value })}></input>
                         <input type="text" placeholder="Nome do item" onChange={e => setAdmin({ ...admin, itemName: e.target.value })}></input>
                         <input type="text" placeholder="Link da imagem" onChange={e => setAdmin({ ...admin, image: e.target.value })}></input>
-                        <input type="text" placeholder="Preço na loja" onChange={e => setAdmin({ ...admin, storePrice: e.target.value })}></input>
-                        <input type="text" placeholder="Preço no site Conceito" onChange={e => setAdmin({ ...admin, price: e.target.value })}></input>
-                        <input type="text" placeholder="Desconto" onChange={e => setAdmin({ ...admin, discount: e.target.value })}></input>
+                        <input type="number" placeholder="Preço na loja" onChange={e => setAdmin({ ...admin, storePrice: e.target.value })}></input>
+                        <input type="number" placeholder="Preço no site Conceito" onChange={e => setAdmin({ ...admin, price: e.target.value })}></input>
+                        <input type="number" placeholder="Desconto" onChange={e => setAdmin({ ...admin, discount: e.target.value })}></input>
                         <input type="text" placeholder="Tamanho" onChange={e => setAdmin({ ...admin, size: e.target.value })}></input>
                         <input type="text" placeholder="Cor" onChange={e => setAdmin({ ...admin, color: e.target.value })}></input>
                         <input type="text" placeholder="Descrição" onChange={e => setAdmin({ ...admin, description: e.target.value })}></input>
