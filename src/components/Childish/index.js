@@ -36,7 +36,7 @@ function Childish() {
             <main className="childish-clothes">
                 <h2>Promoções</h2>
                 <div className="home-childish-products">
-                    {items.filter(item => item.category === "infatil" && item.discount > 0).map(item => {
+                    {items.filter(item => item.category === "infantil" && item.discount > 0).map(item => {
                         return (
                             <Link to={`/product/${item.id}`} key={item.category + item.itemName + item.id}>
                                 <Picture
