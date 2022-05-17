@@ -3,17 +3,18 @@ import { useState } from 'react';
 
 function Sizes(props) {
 
-    const { size, itemInformation, setItemInformation} = props;
+    const { size, info, setInfo} = props;
 
     const [sizeAvailable, setSizeAvailable] = useState(true)
 
     const gold = '#B89E19';
 
+
     if(!sizeAvailable) {
         return (
             <Div2 backgroundColor={`#E7E7E7`} borderColor={gold} onClick={() => {
                 setSizeAvailable(true)
-                setItemInformation({...itemInformation, size: ''})
+                setInfo({...info, size: ""})
                 }}>
                 <p>{size}</p>
             </Div2>
@@ -22,7 +23,7 @@ function Sizes(props) {
         return (
             <Div backgroundColor={`#FFFFFF`} borderColor={`#000000`} onClick={() => {
                 setSizeAvailable(false)
-                setItemInformation({...itemInformation, size: size})
+                setInfo({...info, size: size})
                 }}>
                 <p>{size}</p>
             </Div>
