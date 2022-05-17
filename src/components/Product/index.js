@@ -26,14 +26,15 @@ function Product() {
 
     useEffect(() => {
         const promisse = axios.get(`http://localhost:5000/product/${idProduct}`,);
+        console.log(idProduct, "oioi")
         promisse.then(response => {
             const { data } = response;
             setItems(data);
-            setItemInformation({ ...itemInformation, itemName: data.itemName, price: data.price })
+            setItemInformation({ ...itemInformation, itemName: data.register.itemName, price: data.register.price })
             console.log(data)
         })
         promisse.catch(warning);
-    }, [idProduct]);
+    }, [idProduct, itemInformation]);
 
     function warning() {
         alert("Não foi possível carregar o produto")
@@ -45,54 +46,52 @@ function Product() {
         <>
             <Header />
             <section className="product">
-                <img src={items.image} alt="produto"></img>
-                <h2>{items.itemName}</h2>
+                <img src={items.register.image} alt="produto"></img>
+                <h2>{items.register.itemName}</h2>
                 <div className="product-form">
                     <div className="all-colors">
                         <h2>Cores disponíveis:</h2>
                         <div className="colors">
-                            {console.log(items.colors)}
-                            {items.colors.map(item => {
+                            {items.map(item => {
                                 return (
-                                    <Color color={item.color} itemInformation={itemInformation} setItemInformation={setItemInformation} />
+                                    <Color color={item.resgister.color} itemInformation={itemInformation} setItemInformation={setItemInformation} />
                                 );
                             })}
                         </div>
                     </div>
                     <h2>Tamanhos disponíveis:</h2>
                     <div className="lenght">
-                        {console.log(items.sizes)}
-                        {items.sizes.map(item => {
+                        {items.map(item => {
                             return (
-                                <Sizes size={item.size} itemInformation={itemInformation} setItemInformation={setItemInformation} />
+                                <Sizes size={item.register.size} itemInformation={itemInformation} setItemInformation={setItemInformation} />
                             );
                         })}
 
                     </div>
                     <h2>Descrição:</h2>
                     <div className="item-description">
-                        <p>{items.description}</p>
+                        <p>{items.register.description}</p>
                     </div>
                     <h2>Valor:</h2>
                     <div className="item-value">
                         <div className="item-price">
                             <div className="price-tag">
-                                <h3 >R$ {items.price}</h3>
+                                <h3 >R$ {items.register.price}</h3>
                             </div>
                             <div className="price-discount">
-                                <h3>R$ {items.price - (items.price * items.discount) / 100}</h3>
+                                <h3>R$ {items.register.price - (items.register.price * items.register.discount) / 100}</h3>
                             </div>
                         </div>
-                        <p>ou em até <strong>10x</strong> de <strong>R$ {(items.price - (items.price * items.discount) / 100) / 10}</strong> sem juros no cartão</p>
+                        <p>ou em até <strong>10x</strong> de <strong>R$ {(items.register.price - (items.register.price * items.register.discount) / 100) / 10}</strong> sem juros no cartão</p>
                     </div>
                     <button className="add-product" onClick={() => {
                         console.log(itemInformation)
                         if (localStorage.getItem(key) === null) {
                             localStorage.setItem(key, JSON.stringify(itemInformation));
                         } else {
-                            localStorage.setItem(key,
-                                JSON.stringify({...itemInformation})
-                            );
+                            console.log(localStorage.getItem(key))
+                            localStorage.setItem(key, JSON.stringify([...itemInformation]));
+                            console.log(localStorage.getItem(key))
                         }
                         navigate("/shopping")
                     }}>Adicionar</button>

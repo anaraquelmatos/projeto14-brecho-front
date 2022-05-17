@@ -30,4 +30,78 @@
 .sign-in-header ion-icon {
     width: 26px;
     height: 26px;
+    color: #000000;
+}
+
+.side-bar h2 {
+    width: 250px;
+    font-family: 'Josefin Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 22px;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #000000;
+    color: #6e6a6a;
+    display: flex;
+    justify-content: left;
+}
+
+.side-bar h3 {
+    width: 250px;
+    font-family: 'Josefin Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 18px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #000000;
+    color: #6e6a6a;
+    display: flex;
+    justify-content: left;
+}
+
+.side-bar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #FFFFFF;
+    animation: sideBar 2s;
+    position: fixed;
+    z-index: 2;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    width: 260px;
+}
+
+.side-bar .side-bar-close {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 250px;
+}
+
+.side-bar .side-bar-close .header-icon ion-icon {
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    right: 10px;
+    top: 15px;
+    color: #6e6a6a;
+}
+
+
+@keyframes sideBar {
+    from {
+        opacity: 0;
+        width: 0;
+    }
+
+    to {
+        opacity: 1;
+        width: 265px;
+    }
 }

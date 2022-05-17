@@ -33,21 +33,28 @@ function Home() {
     };
 
     const [items, setItems] = useState([]);
+    const [validation, setValidation] = useState(false);
 
     useEffect(() => {
+
+        setValidation(true)
         const promisse = axios.get("http://localhost:5000");
         promisse.then(response => {
             const { data } = response;
             setItems(data);
+            setValidation(true);
         })
-        promisse.catch(warning);
-    }, []);
+        promisse.catch(() => {
+            setValidation(true)
+            warning()
+        });
+    }, [validation]);
 
     function warning() {
         alert("Não foi possível carregar os produtos")
     }
 
-    return (
+    return items.length > 0 ? (
         <>
             <header>
                 <div className="header">
@@ -56,7 +63,9 @@ function Home() {
                         <Link to={`/sign-in`}>
                             <p className="spaceLogin">Entrar</p>
                         </Link>
-                        <ion-icon name="bag"></ion-icon>
+                        <Link to={`/shopping`}>
+                            <ion-icon name="bag"></ion-icon>
+                        </Link>
                     </div>
                     <div className="logo">
                         <h1>CONCEITO</h1>
@@ -96,54 +105,59 @@ function Home() {
                 <menu className="menu-home">
                     <h4>Feminino</h4>
                     <div className="home-products">
-                        {items.filter(item => item.categoria === "feminino").map(item => {
+                    {items.filter(item => item.register.category === "feminino" && item.register.discount > 0).map(item => {
                             return (
-                                <Link to={`/product/${item.id}`} key={item.categoria + item.itemName + item.id}>
+                                <Link to={`/product/${item.register.id}`} key={item.register.category + item.register.itemName + item.register.id}>
                                     <Picture
-                                        image={item.image}
-                                        itemName={item.itemName}
-                                        description={item.description}
-                                        storePrice={item.storePrice}
-                                        price={item.price}
-                                        discount={item.discount} />
+                                        image={item.register.image}
+                                        itemName={item.register.itemName}
+                                        description={item.register.description}
+                                        storePrice={item.register.storePrice}
+                                        price={item.register.price}
+                                        discount={item.register.discount} />
                                 </Link>
                             )
                         })}
                     </div>
                     <h4>Masculino</h4>
                     <div className="home-products">
-                        {items.filter(item => item.categoria === "masculino" && item.discount > 0).map(item => {
+                        {console.log(items)}
+                        {items.filter(item => item.register.category === "masculino" && item.register.discount > 0).map(item => {
                             return (
-                                <Link to={`/product/${item.id}`} key={item.categoria + item.itemName + item.id}>
+                                <Link to={`/product/${item.register.id}`} key={item.register.category + item.register.itemName + item.register.id}>
                                     <Picture
-                                        image={item.image}
-                                        itemName={item.itemName}
-                                        description={item.description}
-                                        storePrice={item.storePrice}
-                                        price={item.price}
-                                        discount={item.discount} />
+                                        image={item.register.image}
+                                        itemName={item.register.itemName}
+                                        description={item.register.description}
+                                        storePrice={item.register.storePrice}
+                                        price={item.register.price}
+                                        discount={item.register.discount} />
                                 </Link>
                             )
                         })}
                     </div>
                     <h4>Infantil</h4>
                     <div className="home-products">
-                        {items.filter(item => item.categoria === "infantil" && item.discount > 0).map(item => {
+                    {items.filter(item => item.register.category === "infantil" && item.register.discount > 0).map(item => {
                             return (
-                                <Link to={`/product/${item.id}`} key={item.categoria + item.itemName + item.id}>
+                                <Link to={`/product/${item.register.id}`} key={item.register.category + item.register.itemName + item.register.id}>
                                     <Picture
-                                        image={item.image}
-                                        itemName={item.itemName}
-                                        description={item.description}
-                                        storePrice={item.storePrice}
-                                        price={item.price}
-                                        discount={item.discount} />
+                                        image={item.register.image}
+                                        itemName={item.register.itemName}
+                                        description={item.register.description}
+                                        storePrice={item.register.storePrice}
+                                        price={item.register.price}
+                                        discount={item.register.discount} />
                                 </Link>
                             )
                         })}
                     </div>
                 </menu>
             </main>
+            <Footer />
+        </>
+    ) : (
+        <>
             <Footer />
         </>
     )

@@ -36,7 +36,7 @@ function Payment() {
             setCount(count + 1);
         })
         promisse.catch(console.log("endereço não encontrado"));
-    }, [user]);
+    }, [user, count, payment]);
 
     function buy(event){
         event.preventDefault();
