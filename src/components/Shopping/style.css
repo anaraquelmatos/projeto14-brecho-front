@@ -65,7 +65,9 @@
 
 .bag-no-products {
     width: 100%;
+    height: 100vw;
     margin-top: 50px;
+    margin-bottom: 102px;
     display: flex;
     justify-content: center;
 }

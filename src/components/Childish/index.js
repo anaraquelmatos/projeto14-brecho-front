@@ -6,18 +6,25 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from 'react';
 
-function Male() {
+function Childish() {
 
     const [items, setItems] = useState([]);
+    const [validation, setValidation] = useState(false);
 
     useEffect(() => {
+
+        setValidation(true)
         const promisse = axios.get("http://localhost:5000");
         promisse.then(response => {
             const { data } = response;
             setItems(data);
+            setValidation(true);
         })
-        promisse.catch(warning);
-    }, []);
+        promisse.catch(() => {
+            setValidation(true)
+            warning()
+        });
+    }, [validation]);
 
     function warning() {
         alert("Não foi possível carregar os produtos")
@@ -29,64 +36,64 @@ function Male() {
             <main className="childish-clothes">
                 <h2>Promoções</h2>
                 <div className="home-childish-products">
-                    {items.filter(item => item.categoria === "infatil" && item.discount > 0).map(item => {
+                    {items.filter(item => item.register.category === "infatil" && item.register.discount > 0).map(item => {
                         return (
-                            <Link to={`/product/${item.id}`} key={item.categoria + item.itemName + item.id}>
+                            <Link to={`/product/${item.register.id}`} key={item.register.category + item.register.itemName + item.register.id}>
                                 <Picture
-                                    image={item.image}
-                                    itemName={item.itemName}
-                                    description={item.description}
-                                    storePrice={item.storePrice}
-                                    price={item.price} 
-                                    discount={item.discount} />
+                                    image={item.register.image}
+                                    itemName={item.register.itemName}
+                                    description={item.register.description}
+                                    storePrice={item.register.storePrice}
+                                    price={item.register.price} 
+                                    discount={item.register.discount} />
                             </Link>
                         )
                     })}
                 </div>
                 <h2>Camisas</h2>
                 <div className="home-childish-products">
-                    {items.filter(item => item.categoria === "infantil" && item.type === "camisas").map(item => {
+                    {items.filter(item => item.register.category === "infantil" && item.register.type === "camisa").map(item => {
                         return (
-                            <Link to={`/product/${item.id}`} key={item.categoria + item.itemName + item.id}>
+                            <Link to={`/product/${item.register.id}`} key={item.register.category + item.register.itemName + item.register.id}>
                                 <Picture
-                                    image={item.image}
-                                    itemName={item.itemName}
-                                    description={item.description}
-                                    storePrice={item.storePrice}
-                                    price={item.price}
-                                    discount={item.discount} />
+                                    image={item.register.image}
+                                    itemName={item.register.itemName}
+                                    description={item.register.description}
+                                    storePrice={item.register.storePrice}
+                                    price={item.register.price}
+                                    discount={item.register.discount} />
                             </Link>
                         )
                     })}
                 </div>
                 <h2>Bolsas</h2>
                 <div className="home-childish-products">
-                    {items.filter(item => item.categoria === "infantil" && item.type === "bolsas").map(item => {
+                    {items.filter(item => item.register.category === "infantil" && item.register.type === "bolsa").map(item => {
                         return (
-                            <Link to={`/product/${item.id}`} key={item.categoria + item.itemName + item.id}>
+                            <Link to={`/product/${item.register.id}`} key={item.register.category + item.register.itemName + item.register.id}>
                                 <Picture
-                                    image={item.image}
-                                    itemName={item.itemName}
-                                    description={item.description}
-                                    storePrice={item.storePrice}
-                                    price={item.price}
-                                    discount={item.discount} />
+                                    image={item.register.image}
+                                    itemName={item.register.itemName}
+                                    description={item.register.description}
+                                    storePrice={item.register.storePrice}
+                                    price={item.register.price}
+                                    discount={item.register.discount} />
                             </Link>
                         )
                     })}
                 </div>
                 <h2>Sapatos</h2>
                 <div className="home-childish-products">
-                    {items.filter(item => item.categoria === "infantil" && item.type === "sapato").map(item => {
+                    {items.filter(item => item.register.category === "infantil" && item.register.type === "sapato").map(item => {
                         return (
-                            <Link to={`/product/${item.id}`} key={item.categoria + item.itemName + item.id}>
+                            <Link to={`/product/${item.register.id}`} key={item.register.category + item.register.itemName + item.register.id}>
                                 <Picture
-                                    image={item.image}
-                                    itemName={item.itemName}
-                                    description={item.description}
-                                    storePrice={item.storePrice}
-                                    price={item.price}
-                                    discount={item.discount} />
+                                    image={item.register.image}
+                                    itemName={item.register.itemName}
+                                    description={item.register.description}
+                                    storePrice={item.register.storePrice}
+                                    price={item.register.price}
+                                    discount={item.register.discount} />
                             </Link>
                         )
                     })}
@@ -97,4 +104,4 @@ function Male() {
     )
 }
 
-export default Male;
+export default Childish;

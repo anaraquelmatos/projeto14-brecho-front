@@ -8,6 +8,7 @@ import { Link, useNavigate } from "react-router-dom";
 function SignUp() {
 
     const navigate = useNavigate();
+    const [load, setLoad] = useState(false);
     const [userInfos, setUserInfos] = useState({
         name: '',
         email: '',
@@ -18,13 +19,16 @@ function SignUp() {
 
     function register(event) {
         event.preventDefault();
+        setLoad(true);
         const promisse = axios.post("http://localhost:5000/sign-up", userInfos);
         promisse.then(response => {
             const { data } = response;
             console.log(data);
+            setLoad(false);
             navigate("/");
         });
         promisse.catch(() => {
+            setLoad(false);
             warning();
         })
     }
@@ -33,7 +37,7 @@ function SignUp() {
         alert('Não foi possível executar a ação');
     }
 
-    return (
+    return !load ? (
         <>
             <Header />
             <section className="sign-up">
@@ -54,6 +58,27 @@ function SignUp() {
             </section>
             <Footer />
         </>
+    ) : (
+        <>
+        <Header />
+        <section className="sign-up">
+            <Link to={`/sign-in`}>
+                <p>JÁ SOU CLIENTE CONCEITO</p>
+            </Link>
+            <form className="sign-up-form">
+                <input type="text" placeholder="Nome"></input>
+                <input type="text" placeholder="Email"></input>
+                <input type="text" placeholder="CPF" maxLength="11" minLength="11"></input>
+                <input type="password" placeholder="Senha"></input>
+                <input type="password" placeholder="Repetir Senha"></input>
+                <button>Cadastrar</button>
+                <Link to={`/sign-in`}>
+                    <p>QUERO FAZER O LOGIN</p>
+                </Link>
+            </form>
+        </section>
+        <Footer />
+    </>
     )
 }
 
