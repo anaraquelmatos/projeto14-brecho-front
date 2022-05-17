@@ -24,7 +24,12 @@ function Product() {
         price: '',
         discount: '',
         image: '',
-        description: ''
+        description: '',
+    });
+
+    const [info, setInfo] = useState({
+        color: '',
+        size: ''
     });
 
     useEffect(() => {
@@ -34,7 +39,7 @@ function Product() {
             setItems([...items, data]);
             setItemInformation({...itemInformation, itemName: data.itemName, price: data.price, discount: data.discount,
             image: data.image, description: data.description});
-            console.log(itemInformation.discount)
+            setInfo({...info, color: data.color, size: data.size});
         })
         promisse.catch(warning);
     }, [idProduct, items.itemName]);
@@ -43,7 +48,6 @@ function Product() {
         alert("Não foi possível carregar o produto");
     }
 
-    console.log(itemInformation.discount)
     return items.length !== 0 ? (
         <>
             <Header />
@@ -56,7 +60,7 @@ function Product() {
                         <div className="colors">
                             {items.map(item => {
                                 return (
-                                    <Color key={item.idp + item.color + item.itemName} color={item.color} itemInformation={itemInformation} setItemInformation={setItemInformation} />
+                                    <Color key={item.idp + item.color + item.itemName} color={item.color} info={info} setInfo={setInfo} />
                                 );
                             })}
                         </div>
@@ -65,7 +69,7 @@ function Product() {
                     <div className="lenght">
                         {items.map(item => {
                             return (
-                                <Sizes key={item.idp + item.size + item.itemName} size={item.size} itemInformation={itemInformation} setItemInformation={setItemInformation} />
+                                <Sizes key={item.idp + item.size + item.itemName} size={item.size} info={info} setInfo={setInfo} />
                             );
                         })}
 
@@ -81,18 +85,19 @@ function Product() {
                                 <h3 >R$ {itemInformation.price}</h3>
                             </div>
                             <div className="price-discount">
-                                {console.log(itemInformation.discount)}
+
                                 <h3>R$ {itemInformation.price - (itemInformation.price * itemInformation.discount) / 100}</h3>
                             </div>
                         </div>
                         <p>ou em até <strong>10x</strong> de <strong>R$ {(itemInformation.price - (itemInformation.price * itemInformation.discount) / 100) / 10}</strong> sem juros no cartão</p>
                     </div>
                     <button className="add-product" onClick={() => {
+
                         if (localStorage.getItem(key) === null) {
-                            localStorage.setItem(key, JSON.stringify(itemInformation));
+                            localStorage.setItem(key, JSON.stringify(info));
                         } else {
                             console.log(localStorage.getItem(key))
-                            localStorage.setItem(key, JSON.stringify([...itemInformation]));
+                            localStorage.setItem(key, JSON.stringify([...info]));
                             console.log(localStorage.getItem(key))
                         }
                         navigate("/shopping")

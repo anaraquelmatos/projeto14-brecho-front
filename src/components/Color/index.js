@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 function Color(props) {
 
-    const { color, itemInformation, setItemInformation } = props;
+    const { color, info, setInfo } = props;
 
     const [colorAvailable, setColorAvailable] = useState(true)
 
@@ -13,7 +13,7 @@ function Color(props) {
         return (
             <Div2 borderColor={gold} color={color} onClick={() => {
                 setColorAvailable(true)
-                setItemInformation({...itemInformation, color: ''})
+                setInfo({...info, color: ""})
                 }}>
             </Div2>
         )
@@ -21,7 +21,7 @@ function Color(props) {
         return (
             <Div borderColor={color} color={color} onClick={() => {
                 setColorAvailable(false)
-                setItemInformation({...itemInformation, color: color})
+                setInfo({...info, color: color})
                 }}>
             </Div>
         )
