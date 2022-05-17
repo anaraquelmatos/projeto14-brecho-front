@@ -103,7 +103,7 @@ function Home() {
                     <div className="home-products">
                     {items.filter(item => item.category === "feminino" && item.discount > 0).map(item => {
                             return (
-                                <Link to={`/product/${item.id}`} key={item.category + item.itemName + item.id}>
+                                <Link to={`/product/${item.idp}`} key={item.category + item.itemName + item.idp}>
                                     <Picture
                                         image={item.image}
                                         itemName={item.itemName}
@@ -117,10 +117,9 @@ function Home() {
                     </div>
                     <h4>Masculino</h4>
                     <div className="home-products">
-                        {console.log(items)}
                         {items.filter(item => item.category === "masculino" && item.discount > 0).map(item => {
                             return (
-                                <Link to={`/product/${item.id}`} key={item.category + item.itemName + item.id}>
+                                <Link to={`/product/${item.idp}`} key={item.category + item.itemName + item.idp}>
                                     <Picture
                                         image={item.image}
                                         itemName={item.itemName}
@@ -136,7 +135,7 @@ function Home() {
                     <div className="home-products">
                     {items.filter(item => item.category === "infantil" && item.discount > 0).map(item => {
                             return (
-                                <Link to={`/product/${item.id}`} key={item.category + item.itemName + item.id}>
+                                <Link to={`/product/${item.idp}`} key={item.category + item.itemName + item.idp}>
                                     <Picture
                                         image={item.image}
                                         itemName={item.itemName}
