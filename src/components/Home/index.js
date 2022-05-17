@@ -33,121 +33,126 @@ function Home() {
     };
 
     const [items, setItems] = useState([]);
+    const [count, setCount] = useState(0);
 
     useEffect(() => {
-        const promisse = axios.get("http://localhost:5000");
+        const promisse = axios.get("http://localhost:5000/");
         promisse.then(response => {
             const { data } = response;
             setItems(data);
+            console.log(items)
+            setCount(data.itemName);
         })
         promisse.catch(warning);
-    }, []);
+    }, [count]);
 
     function warning() {
         alert("Não foi possível carregar os produtos")
     }
 
-    return (
-        <>
-            <header>
-                <div className="header">
-                    <div className="user">
-                        <ion-icon name="person-circle-outline"></ion-icon>
-                        <Link to={`/sign-in`}>
-                            <p className="spaceLogin">Entrar</p>
-                        </Link>
-                        <ion-icon name="bag"></ion-icon>
-                    </div>
-                    <div className="logo">
-                        <h1>CONCEITO</h1>
-                    </div>
-                    <nav>
-                        <div className="menu">
-                            <Link to={`/feminine`}>
-                                <p>FEMININO</p>
+        return items.length !== 0 ?(
+            <>
+                <header>
+                    <div className="header">
+                        <div className="user">
+                            <ion-icon name="person-circle-outline"></ion-icon>
+                            <Link to={`/sign-in`}>
+                                <p className="spaceLogin">Entrar</p>
                             </Link>
-                            <p>|</p>
-                            <Link to={`/masculine`}>
-                                <p>MASCULINO</p>
-                            </Link>
-                            <p>|</p>
-                            <Link to={`/childish`}>
-                                <p>INFANTIL</p>
-                            </Link>
+                            <ion-icon name="bag"></ion-icon>
                         </div>
-                    </nav>
-                </div>
-            </header >
-            <main className="main-home">
-                <div className="home">
-                    <Slide ref={slideRef} {...properties}>
-                        {slideImages.map((slideImage, index) => (
-                            <div className="each-slide" key={index}>
-                                <img src={slideImage.url} alt="Courosel" />
+                        <div className="logo">
+                            <h1>CONCEITO</h1>
+                        </div>
+                        <nav>
+                            <div className="menu">
+                                <Link to={`/feminine`}>
+                                    <p>FEMININO</p>
+                                </Link>
+                                <p>|</p>
+                                <Link to={`/masculine`}>
+                                    <p>MASCULINO</p>
+                                </Link>
+                                <p>|</p>
+                                <Link to={`/childish`}>
+                                    <p>INFANTIL</p>
+                                </Link>
                             </div>
-                        ))}
-                    </Slide>
-                </div>
-                <div className="main-infos">
-                    <h3>Frete Grátis a partir de R$200</h3>
-                    <img src={send} alt="Product delivery" />
-                </div>
-                <div className="colored-band"></div>
-                <menu className="menu-home">
-                    <h4>Feminino</h4>
-                    <div className="home-products">
-                        {items.filter(item => item.categoria === "feminino").map(item => {
-                            return (
-                                <Link to={`/product/${item.id}`} key={item.categoria + item.itemName + item.id}>
-                                    <Picture
-                                        image={item.image}
-                                        itemName={item.itemName}
-                                        description={item.description}
-                                        storePrice={item.storePrice}
-                                        price={item.price}
-                                        discount={item.discount} />
-                                </Link>
-                            )
-                        })}
+                        </nav>
                     </div>
-                    <h4>Masculino</h4>
-                    <div className="home-products">
-                        {items.filter(item => item.categoria === "masculino" && item.discount > 0).map(item => {
-                            return (
-                                <Link to={`/product/${item.id}`} key={item.categoria + item.itemName + item.id}>
-                                    <Picture
-                                        image={item.image}
-                                        itemName={item.itemName}
-                                        description={item.description}
-                                        storePrice={item.storePrice}
-                                        price={item.price}
-                                        discount={item.discount} />
-                                </Link>
-                            )
-                        })}
+                </header >
+                <main className="main-home">
+                    <div className="home">
+                        <Slide ref={slideRef} {...properties}>
+                            {slideImages.map((slideImage, index) => (
+                                <div className="each-slide" key={index}>
+                                    <img src={slideImage.url} alt="Courosel" />
+                                </div>
+                            ))}
+                        </Slide>
                     </div>
-                    <h4>Infantil</h4>
-                    <div className="home-products">
-                        {items.filter(item => item.categoria === "infantil" && item.discount > 0).map(item => {
-                            return (
-                                <Link to={`/product/${item.id}`} key={item.categoria + item.itemName + item.id}>
-                                    <Picture
-                                        image={item.image}
-                                        itemName={item.itemName}
-                                        description={item.description}
-                                        storePrice={item.storePrice}
-                                        price={item.price}
-                                        discount={item.discount} />
-                                </Link>
-                            )
-                        })}
+                    <div className="main-infos">
+                        <h3>Frete Grátis a partir de R$200</h3>
+                        <img src={send} alt="Product delivery" />
                     </div>
-                </menu>
-            </main>
-            <Footer />
-        </>
-    )
-
+                    <div className="colored-band"></div>
+                    <menu className="menu-home">
+                        <h4>Feminino</h4>
+                        <div className="home-products">
+                            {items.filter(item => item.categoria === "feminino").map(item => {
+                                return (
+                                    <Link to={`/product/${item.id}`} key={item.categoria + item.itemName + item.id}>
+                                        <Picture
+                                            image={item.image}
+                                            itemName={item.itemName}
+                                            description={item.description}
+                                            storePrice={item.storePrice}
+                                            price={item.price}
+                                            discount={item.discount} />
+                                    </Link>
+                                )
+                            })}
+                        </div>
+                        <h4>Masculino</h4>
+                        <div className="home-products">
+                            {items.filter(item => item.categoria === "masculino" && item.discount > 0).map(item => {
+                                return (
+                                    <Link to={`/product/${item.id}`} key={item.categoria + item.itemName + item.id}>
+                                        <Picture
+                                            image={item.image}
+                                            itemName={item.itemName}
+                                            description={item.description}
+                                            storePrice={item.storePrice}
+                                            price={item.price}
+                                            discount={item.discount} />
+                                    </Link>
+                                )
+                            })}
+                        </div>
+                        <h4>Infantil</h4>
+                        <div className="home-products">
+                            {items.filter(item => item.categoria === "infantil" && item.discount > 0).map(item => {
+                                return (
+                                    <Link to={`/product/${item.id}`} key={item.categoria + item.itemName + item.id}>
+                                        <Picture
+                                            image={item.image}
+                                            itemName={item.itemName}
+                                            description={item.description}
+                                            storePrice={item.storePrice}
+                                            price={item.price}
+                                            discount={item.discount} />
+                                    </Link>
+                                )
+                            })}
+                        </div>
+                    </menu>
+                </main>
+                <Footer />
+            </>
+        ): (
+            <p>Carregando...</p>
+        )
+    
 
 }
 
