@@ -61,7 +61,7 @@ function Address() {
                         <input type="text" placeholder="Cidade" onChange={e => setAddress({ ...address, city: e.target.value })}></input>
                         <input type="text" placeholder="Complemento" onChange={e => setAddress({ ...address, reference: e.target.value })}></input>
                         <input type="text" placeholder="Telefone" onChange={e => setAddress({ ...address, cellphone: e.target.value })}></input>
-                        <button>Confirmar</button>
+                        <button type="submit">Confirmar</button>
                     </div>
                 </form>
             </div>

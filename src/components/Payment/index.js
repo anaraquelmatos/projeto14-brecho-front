@@ -19,7 +19,9 @@ function Payment() {
 
     const [address, setAddress] = useState({});
 
-    const [count, setCount] = useState(null);
+    const [count, setCount] = useState(0);
+
+    const [total, setTotal] = useState(0);
 
     const navigate = useNavigate();
 
@@ -34,13 +36,20 @@ function Payment() {
             setAddress(data);
             setCount(count + 1);
         })
-    }, [user, count, payment]);
+    }, []);
 
-    function buy(event){
+    function buy(event) {
         event.preventDefault();
         alert("Compra realizada com sucesso!");
         navigate("/")
     }
+
+    function addAddress(){
+        alert("Por favor, cadastre o seu endereço")
+    }
+
+    const storage = JSON.parse(localStorage.getItem('userLocal'));
+    console.log(storage)
 
     return address.length === 0 ? (
         <>
@@ -55,17 +64,21 @@ function Payment() {
                     </Link>
                     <h2>Seu pedido</h2>
                     <div className="order">
-                        <div className="all-info">
-                            <div className="photo-name">
-                                <img src="https://th.bing.com/th/id/OIP.SJNNdJ__RjBENZDwXmn96QHaJ5?pid=ImgDet&rs=1" alt="Sapato" />
-                                <p>Sapato preto de luxo</p>
-                            </div>
-                            <p>Tamanho 42</p>
-                            <p>Quantidade 1</p>
-                            <p>Valor do pedido: R$ 1.000,00</p>
-                            <p >Frete: R$20,00</p>
-                        </div>
-                        <p className="total">Total: R$1.020,00</p>
+                        {storage.map(item => {
+                            return (
+                                <div className="all-info">
+                                    <div className="photo-name">
+                                        <img src={item.image} alt={item.itemName} />
+                                        <p>{item.itemName}</p>
+                                    </div>
+                                    <p>Tamanho {item.size}</p>
+                                    <p>Quantidade 1</p>
+                                    <p>Valor do pedido: R$ {item.price}</p>
+                                </div>
+                            )
+                        })}
+                        <p >Frete: R$20,00</p>
+                        <p className="total">Total: R${total},00</p>
                     </div>
                     <h2>Pagamento</h2>
                     <form>
@@ -74,55 +87,58 @@ function Payment() {
                             <input type="number" placeholder="Número do cartão" onChange={e => setPayment({ ...payment, number: e.target.value })}></input>
                             <input type="number" placeholder="Validade" onChange={e => setPayment({ ...payment, validity: e.target.value })}></input>
                             <input type="number" placeholder="CVV" minLength="3" maxLength="3" onChange={e => setPayment({ ...payment, cvv: e.target.value })}></input>
-                            <button>Comprar</button>
+                            <button onClick={() => {addAddress()}}>Comprar</button>
                         </div>
                     </form>
                 </div>
             </main>
             <Footer />
         </>
-    ):(
-            <>
-                <Header />
-                <main>
-                    <div className="payment">
-                        <h2>Dados de envio</h2>
-                        <Link to={`/address`}>
-                            <div className="address">
-                                <p>{address.address}</p>
-                                <p>{address.neighborhood}</p>
-                                <p>{address.numberHouse}</p>
-                                <p>{address.city}</p>
-                            </div>
-                        </Link>
-                        <h2>Seu pedido</h2>
-                        <div className="order">
-                            <div className="all-info">
-                                <div className="photo-name">
-                                    <img src="https://th.bing.com/th/id/OIP.SJNNdJ__RjBENZDwXmn96QHaJ5?pid=ImgDet&rs=1" alt="Sapato" />
-                                    <p>Sapato preto de luxo</p>
-                                </div>
-                                <p>Tamanho 42</p>
-                                <p>Quantidade 1</p>
-                                <p>Valor do pedido: R$ 1.000,00</p>
-                                <p >Frete: R$20,00</p>
-                            </div>
-                            <p className="total">Total: R$1.020,00</p>
+    ) : (
+        <>
+            <Header />
+            <main>
+                <div className="payment">
+                    <h2>Dados de envio</h2>
+                    <Link to={`/address`}>
+                        <div className="address">
+                            <p>{address.city},</p>
+                            <p>{address.neighborhood},</p>
+                            <p>{address.street}, {address.numberHouse}</p>
                         </div>
-                        <h2>Pagamento</h2>
-                        <form onSubmit={buy}>
-                            <div className="payment-conditions">
-                                <input type="text" placeholder="Nome do titular" onChange={e => setPayment({ ...payment, name: e.target.value })}></input>
-                                <input type="number" placeholder="Número do cartão" onChange={e => setPayment({ ...payment, number: e.target.value })}></input>
-                                <input type="number" placeholder="Validade" onChange={e => setPayment({ ...payment, validity: e.target.value })}></input>
-                                <input type="number" placeholder="CVV" minLength="3" maxLength="3" onChange={e => setPayment({ ...payment, cvv: e.target.value })}></input>
-                                <button type="submit">Comprar</button>
-                            </div>
-                        </form>
+                    </Link>
+                    <h2>Seu pedido</h2>
+                    <div className="order">
+                        {storage.map(item => {
+                            return (
+                                <div className="all-info">
+                                    <div className="photo-name">
+                                        <img src={item.image} alt={item.itemName} />
+                                        <p>{item.itemName}</p>
+                                    </div>
+                                    <p>Tamanho {item.size}</p>
+                                    <p>Quantidade 1</p>
+                                    <p>Valor do pedido: R$ {item.price}</p>
+                                </div>
+                            )
+                        })}
+                        <p >Frete: R$20,00</p>
+                        <p className="total">Total: R${total},00</p>
                     </div>
-                </main>
-                <Footer />
-            </>
+                    <h2>Pagamento</h2>
+                    <form onSubmit={buy}>
+                        <div className="payment-conditions">
+                            <input type="text" placeholder="Nome do titular" onChange={e => setPayment({ ...payment, name: e.target.value })}></input>
+                            <input type="number" placeholder="Número do cartão" onChange={e => setPayment({ ...payment, number: e.target.value })}></input>
+                            <input type="number" placeholder="Validade" onChange={e => setPayment({ ...payment, validity: e.target.value })}></input>
+                            <input type="number" placeholder="CVV" minLength="3" maxLength="3" onChange={e => setPayment({ ...payment, cvv: e.target.value })}></input>
+                            <button type="submit">Comprar</button>
+                        </div>
+                    </form>
+                </div>
+            </main>
+            <Footer />
+        </>
     );
 }
 
