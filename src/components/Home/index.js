@@ -34,26 +34,28 @@ function Home() {
     };
 
     const [items, setItems] = useState([]);
+    const [count, setCount] = useState(0);
 
     const { user, setUser } = useContext(UserContext);
 
     const navigate = useNavigate();
 
     useEffect(() => {
-
         const promisse = axios.get("http://localhost:5000");
         promisse.then(response => {
             const { data } = response;
             setItems(data);
+            console.log(items)
+            setCount(data.itemName);
         })
-        promisse.catch(() => {
-            warning()
-        });
+        promisse.catch(warning);
     }, []);
+
 
     function warning() {
         alert("Não foi possível carregar os produtos")
     }
+
 
     function deleteToken() {
 
@@ -86,6 +88,7 @@ function Home() {
                             <Link to={`/shopping`}>
                                 <ion-icon name="bag"></ion-icon>
                             </Link>
+                            <ion-icon name="bag"></ion-icon>
                         </div>
                         <div className="logo">
                             <h1>CONCEITO</h1>
@@ -289,7 +292,6 @@ function Home() {
         )
 
     }
-
 }
 
 export default Home;
