@@ -44,14 +44,11 @@ function Product() {
         alert("Não foi possível carregar o produto");
     }
 
-    console.log(itemInformation)
 
     function bagStorage() {
         const localArray = JSON.parse(localStorage.getItem('userLocal') || '[]');
-        console.log(localArray);
         localArray.push(itemInformation);
         localStorage.setItem("userLocal", JSON.stringify(localArray));
-        console.log(JSON.parse(localStorage.getItem("userLocal")))
     }
 
     if (items.length !== 0) {

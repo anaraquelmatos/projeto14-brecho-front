@@ -45,7 +45,6 @@ function Home() {
         promisse.then(response => {
             const { data } = response;
             setItems(data);
-            console.log(items)
             setCount(data.itemName);
         })
         promisse.catch(warning);
