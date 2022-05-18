@@ -88,7 +88,6 @@ function Home() {
                             <Link to={`/shopping`}>
                                 <ion-icon name="bag"></ion-icon>
                             </Link>
-                            <ion-icon name="bag"></ion-icon>
                         </div>
                         <div className="logo">
                             <h1>CONCEITO</h1>

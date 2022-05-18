@@ -2,12 +2,25 @@ import "./style.css";
 import Header from "../Header";
 import Footer from "../Footer";
 import Bag from "../Bag";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import UserContext from "../../UserContext";
+import { useContext } from "react";
 
 function Shopping() {
 
+    const { user } = useContext(UserContext);
+    const navigate = useNavigate();
+
     const storage = JSON.parse(localStorage.getItem('userLocal'));
     let myObj = JSON.parse(localStorage.getItem('userLocal')) !== null ? storage : [];
+
+    function checkToken() {
+        if (!user.token) {
+            navigate("/sign-in")
+        } else {
+            navigate("/payment")
+        }
+    }
 
     if (myObj.length === 0) {
         return (
@@ -39,9 +52,7 @@ function Shopping() {
                             )
                         })}
                         <div className="products-confirmation">
-                            <Link to={`/payment`}>
-                                <button>Continuar</button>
-                            </Link>
+                            <button onClick={() => checkToken()}>Continuar</button>
                         </div>
                     </div>
                 </main>
