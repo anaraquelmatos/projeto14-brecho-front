@@ -20,7 +20,7 @@ function SignIn() {
 
         event.preventDefault();
         setLoad(true);
-        const promisse = axios.post("https://git.heroku.com/back-project-conceito.git/sign-in", userInfos);
+        const promisse = axios.post("https://back-project-conceito.herokuapp.com/sign-in", userInfos);
         promisse.then(response => {
             const { data } = response;
             setUser({ token: data });

@@ -30,7 +30,7 @@ function Payment() {
     };
 
     useEffect(() => {
-        const promisse = axios.get(`https://git.heroku.com/back-project-conceito.git/payment`, config);
+        const promisse = axios.get(`https://back-project-conceito.herokuapp.com/payment`, config);
         promisse.then(response => {
             const { data } = response;
             setAddress(data);

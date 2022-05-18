@@ -14,7 +14,7 @@ function Female() {
     useEffect(() => {
 
         setValidation(true)
-        const promisse = axios.get("https://git.heroku.com/back-project-conceito.git/");
+        const promisse = axios.get("https://back-project-conceito.herokuapp.com/");
         promisse.then(response => {
             const { data } = response;
             setItems(data);
