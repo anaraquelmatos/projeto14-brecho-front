@@ -47,8 +47,8 @@ function SignIn() {
             <Header />
             <section className="sign-in">
                 <form onSubmit={login}>
-                    <input type="text" placeholder="Email" onChange={e => setUserInfos({ ...userInfos, email: e.target.value })}></input>
-                    <input type="password" placeholder="Senha" onChange={e => setUserInfos({ ...userInfos, password: e.target.value })}></input>
+                    <input type="email" placeholder="Email" required onChange={e => setUserInfos({ ...userInfos, email: e.target.value })}></input>
+                    <input type="password" placeholder="Senha" maxLength="10" minLength="6" onChange={e => setUserInfos({ ...userInfos, password: e.target.value })}></input>
                     <button type="submit">Entrar</button>
                     <Link to={`/sign-up`}>
                         <p>QUERO ME CADASTRAR</p>
