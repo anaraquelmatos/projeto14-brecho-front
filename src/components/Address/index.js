@@ -33,9 +33,7 @@ function Address() {
         event.preventDefault();
 
         const promisse = axios.put("http://localhost:5000/address", address, config);
-        promisse.then(response => {
-            const { data } = response;
-            console.log(data);
+        promisse.then(() => {
             navigate(`/payment`);
         });
         promisse.catch(() => {
@@ -63,7 +61,7 @@ function Address() {
                         <input type="text" placeholder="Cidade" onChange={e => setAddress({ ...address, city: e.target.value })}></input>
                         <input type="text" placeholder="Complemento" onChange={e => setAddress({ ...address, reference: e.target.value })}></input>
                         <input type="text" placeholder="Telefone" onChange={e => setAddress({ ...address, cellphone: e.target.value })}></input>
-                        <button>Confirmar</button>
+                        <button type="submit">Confirmar</button>
                     </div>
                 </form>
             </div>

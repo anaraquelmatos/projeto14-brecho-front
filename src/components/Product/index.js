@@ -21,91 +21,98 @@ function Product() {
         itemName: '',
         color: "",
         size: "",
-        price: ''
+        price: '',
+        discount: '',
+        image: '',
+        description: '',
     });
 
     useEffect(() => {
-        const promisse = axios.get(`http://localhost:5000/product/${idProduct}`,);
+        const promisse = axios.get(`http://localhost:5000/product/${idProduct}`);
         promisse.then(response => {
             const { data } = response;
-            setItems(data);
-            setItemInformation({ ...itemInformation, itemName: data.itemName, price: data.price })
-            console.log(data)
+            setItems([...items, data]);
+            setItemInformation({
+                ...itemInformation, itemName: data.itemName, price: data.price, discount: data.discount,
+                image: data.image, description: data.description
+            });
         })
         promisse.catch(warning);
-    }, [idProduct]);
+    }, [idProduct, items.itemName]);
 
     function warning() {
-        alert("Não foi possível carregar o produto")
+        alert("Não foi possível carregar o produto");
     }
 
     console.log(itemInformation)
 
-    return items.length !== 0 ? (
-        <>
-            <Header />
-            <section className="product">
-                <img src={items.image} alt="produto"></img>
-                <h2>{items.itemName}</h2>
-                <div className="product-form">
-                    <div className="all-colors">
-                        <h2>Cores disponíveis:</h2>
-                        <div className="colors">
-                            {console.log(items.colors)}
-                            {items.colors.map(item => {
+    function bagStorage() {
+        const localArray = JSON.parse(localStorage.getItem('userLocal') || '[]');
+        console.log(localArray);
+        localArray.push(itemInformation);
+        localStorage.setItem("userLocal", JSON.stringify(localArray));
+        console.log(JSON.parse(localStorage.getItem("userLocal")))
+    }
+
+    if (items.length !== 0) {
+        return (
+            <>
+                <Header />
+                <section className="product">
+                    <img src={itemInformation.image} alt="produto"></img>
+                    <h2>{items.itemName}</h2>
+                    <div className="product-form">
+                        <div className="all-colors">
+                            <h2>Cor disponível:</h2>
+                            <div className="colors">
+                                {items.map(item => {
+                                    return (
+                                        <Color key={item.idp + item.color + item.itemName} color={item.color} info={itemInformation} setInfo={setItemInformation} />
+                                    );
+                                })}
+                            </div>
+                        </div>
+                        <h2>Tamanho disponível:</h2>
+                        <div className="lenght">
+                            {items.map(item => {
                                 return (
-                                    <Color color={item.color} itemInformation={itemInformation} setItemInformation={setItemInformation} />
+                                    <Sizes key={item.idp + item.size + item.itemName} size={item.size} info={itemInformation} setInfo={setItemInformation} />
                                 );
                             })}
-                        </div>
-                    </div>
-                    <h2>Tamanhos disponíveis:</h2>
-                    <div className="lenght">
-                        {console.log(items.sizes)}
-                        {items.sizes.map(item => {
-                            return (
-                                <Sizes size={item.size} itemInformation={itemInformation} setItemInformation={setItemInformation} />
-                            );
-                        })}
 
-                    </div>
-                    <h2>Descrição:</h2>
-                    <div className="item-description">
-                        <p>{items.description}</p>
-                    </div>
-                    <h2>Valor:</h2>
-                    <div className="item-value">
-                        <div className="item-price">
-                            <div className="price-tag">
-                                <h3 >R$ {items.price}</h3>
-                            </div>
-                            <div className="price-discount">
-                                <h3>R$ {items.price - (items.price * items.discount) / 100}</h3>
-                            </div>
                         </div>
-                        <p>ou em até <strong>10x</strong> de <strong>R$ {(items.price - (items.price * items.discount) / 100) / 10}</strong> sem juros no cartão</p>
+                        <h2>Descrição:</h2>
+                        <div className="item-description">
+                            <p>{itemInformation.description}</p>
+                        </div>
+                        <h2>Valor:</h2>
+                        <div className="item-value">
+                            <div className="item-price">
+                                <div className="price-tag">
+                                    <h3 >R$ {itemInformation.price}</h3>
+                                </div>
+                                <div className="price-discount">
+
+                                    <h3>R$ {itemInformation.price - (itemInformation.price * itemInformation.discount) / 100}</h3>
+                                </div>
+                            </div>
+                            <p>ou em até <strong>10x</strong> de <strong>R$ {(itemInformation.price - (itemInformation.price * itemInformation.discount) / 100) / 10}</strong> sem juros no cartão</p>
+                        </div>
+                        <button className="add-product" onClick={() => {
+                            bagStorage()
+                            navigate("/shopping")
+                        }}>Adicionar</button>
                     </div>
-                    <button className="add-product" onClick={() => {
-                        console.log(itemInformation)
-                        if (localStorage.getItem(key) === null) {
-                            localStorage.setItem(key, JSON.stringify(itemInformation));
-                        } else {
-                            localStorage.setItem(key,
-                                JSON.stringify({...itemInformation})
-                            );
-                        }
-                        navigate("/shopping")
-                    }}>Adicionar</button>
-                </div>
-            </section>
-            <Footer />
-        </>
-    ) : (
-        <>
-            <Header />
-            <Footer />
-        </>
-    )
+                </section>
+                <Footer />
+            </>
+        )
+    }
+    if (items.length === 0) {
+        return (
+            <><Header /></>
+        )
+    }
 
 }
 

@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 function Shopping() {
 
-    const storage = [JSON.parse(localStorage.getItem('userLocal'))];
+    const storage = JSON.parse(localStorage.getItem('userLocal'));
     let myObj = JSON.parse(localStorage.getItem('userLocal')) !== null ? storage : [];
 
     if (myObj.length === 0) {
@@ -33,14 +33,13 @@ function Shopping() {
                             <p>Quantidade</p>
                             <p>Preço</p>
                         </div>
-                        {console.log(myObj)}
                         {storage.map((item) => {
                             return (
                                 <Bag itemName={item.itemName} price={item.price} />
                             )
                         })}
                         <div className="products-confirmation">
-                            <Link to={`/sign-in`}>
+                            <Link to={`/payment`}>
                                 <button>Continuar</button>
                             </Link>
                         </div>

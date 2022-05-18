@@ -45,6 +45,7 @@
 .shopping .products-confirmation button {
     width: 320px;
     height: 46px;
+    margin-bottom: 50px;
     background: #B89E19;
     border-radius: 5px;
     border: 1px solid #B89E19;
@@ -56,16 +57,11 @@
     color: #FFFFFF;
 }
 
-.footer-fixed {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-}
-
 .bag-no-products {
     width: 100%;
+    height: 100vw;
     margin-top: 50px;
+    margin-bottom: 102px;
     display: flex;
     justify-content: center;
 }

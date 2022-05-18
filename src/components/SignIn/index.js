@@ -9,6 +9,7 @@ import { Link, useNavigate } from "react-router-dom";
 function SignIn() {
 
     const navigate = useNavigate();
+    const [load, setLoad] = useState(false);
     const { setUser } = useContext(UserContext);
     const [userInfos, setUserInfos] = useState({
         email: '',
@@ -18,17 +19,21 @@ function SignIn() {
     function login(event) {
 
         event.preventDefault();
+        setLoad(true);
         const promisse = axios.post("http://localhost:5000/sign-in", userInfos);
         promisse.then(response => {
             const { data } = response;
             setUser({ token: data });
             if (userInfos.email === "admin@gmail.com") {
                 navigate("/admin");
+                setLoad(false);
             } else {
-                navigate("/payment");
+                navigate("/");
+                setLoad(false);
             }
         })
         promisse.catch(() => {
+            setLoad(false);
             warning()
         })
     }
@@ -37,7 +42,7 @@ function SignIn() {
         alert('Não foi possível fazer o login');
     }
 
-    return (
+    return !load ? (
         <>
             <Header />
             <section className="sign-in">
@@ -45,6 +50,21 @@ function SignIn() {
                     <input type="text" placeholder="Email" onChange={e => setUserInfos({ ...userInfos, email: e.target.value })}></input>
                     <input type="password" placeholder="Senha" onChange={e => setUserInfos({ ...userInfos, password: e.target.value })}></input>
                     <button type="submit">Entrar</button>
+                    <Link to={`/sign-up`}>
+                        <p>QUERO ME CADASTRAR</p>
+                    </Link>
+                </form>
+            </section>
+            <Footer />
+        </>
+    ) : (
+        <>
+            <Header />
+            <section className="sign-in">
+                <form>
+                    <input type="text" placeholder="Email" onChange={e => setUserInfos({ ...userInfos, email: e.target.value })}></input>
+                    <input type="password" placeholder="Senha" onChange={e => setUserInfos({ ...userInfos, password: e.target.value })}></input>
+                    <button>Entrar</button>
                     <Link to={`/sign-up`}>
                         <p>QUERO ME CADASTRAR</p>
                     </Link>

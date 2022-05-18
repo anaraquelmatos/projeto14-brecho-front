@@ -9,15 +9,22 @@ import { useState, useEffect } from 'react';
 function Female() {
 
     const [items, setItems] = useState([]);
+    const [validation, setValidation] = useState(false);
 
     useEffect(() => {
+
+        setValidation(true)
         const promisse = axios.get("http://localhost:5000");
         promisse.then(response => {
             const { data } = response;
             setItems(data);
+            setValidation(true);
         })
-        promisse.catch(warning);
-    }, []);
+        promisse.catch(() => {
+            setValidation(true)
+            warning()
+        });
+    }, [validation]);
 
     function warning() {
         alert("Não foi possível carregar os produtos")
@@ -29,9 +36,9 @@ function Female() {
             <main className="feminine-clothes">
                 <h2>Promoções</h2>
                 <div className="home-female-products">
-                    {items.filter(item => item.categoria === "feminino" && item.discount > 0).map(item => {
+                    {items.filter(item => item.category === "feminino" && item.discount > 0).map(item => {
                         return (
-                            <Link to={`/product/${item.id}`} key={item.categoria + item.itemName + item.id}>
+                            <Link to={`/product/${item.idp}`} key={item.category + item.itemName + item.idp}>
                                 <Picture
                                     image={item.image}
                                     itemName={item.itemName}
@@ -45,9 +52,9 @@ function Female() {
                 </div>
                 <h2>Camisas</h2>
                 <div className="home-female-products">
-                    {items.filter(item => item.categoria === "feminino" && item.type === "camisas").map(item => {
+                    {items.filter(item => item.category === "feminino" && item.type === "camisa").map(item => {
                         return (
-                            <Link to={`/product/${item.id}`} key={item.categoria + item.itemName + item.id}>
+                            <Link to={`/product/${item.idp}`} key={item.category + item.itemName + item.idp}>
                                 <Picture
                                     image={item.image}
                                     itemName={item.itemName}
@@ -61,9 +68,9 @@ function Female() {
                 </div>
                 <h2>Bolsas</h2>
                 <div className="home-female-products">
-                    {items.filter(item => item.categoria === "feminino" && item.type === "bolsas").map(item => {
+                    {items.filter(item => item.category === "feminino" && item.type === "bolsa").map(item => {
                         return (
-                            <Link to={`/product/${item.id}`} key={item.categoria + item.itemName + item.id}>
+                            <Link to={`/product/${item.idp}`} key={item.category + item.itemName + item.idp}>
                                 <Picture
                                     image={item.image}
                                     itemName={item.itemName}
@@ -77,9 +84,9 @@ function Female() {
                 </div>
                 <h2>Sapatos</h2>
                 <div className="home-female-products">
-                    {items.filter(item => item.categoria === "feminino" && item.type === "sapato").map(item => {
+                    {items.filter(item => item.category === "feminino" && item.type === "sapato").map(item => {
                         return (
-                            <Link to={`/product/${item.id}`} key={item.categoria + item.itemName + item.id}>
+                            <Link to={`/product/${item.idp}`} key={item.category + item.itemName + item.idp}>
                                 <Picture
                                     image={item.image}
                                     itemName={item.itemName}
