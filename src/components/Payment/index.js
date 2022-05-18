@@ -33,7 +33,7 @@ function Payment() {
         const promisse = axios.get(`http://localhost:5000/payment`, config);
         promisse.then(response => {
             const { data } = response;
-            setAddress(data);
+            setAddress([...address, data]);
             setCount(count + 1);
         })
     }, []);
@@ -57,7 +57,7 @@ function Payment() {
         console.log(total)
     }
 
-    return address.length === 0 ? (
+    return Object.values(address).length === 0 ? (
         <>
             <Header />
             <main>
