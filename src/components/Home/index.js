@@ -41,7 +41,7 @@ function Home() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        const promisse = axios.get("https://git.heroku.com/back-project-conceito.git/");
+        const promisse = axios.get("https://back-project-conceito.herokuapp.com/");
         promisse.then(response => {
             const { data } = response;
             setItems(data);
@@ -65,7 +65,7 @@ function Home() {
             }
         }
 
-        const URL = `https://git.heroku.com/back-project-conceito.git/${user.token}`
+        const URL = `https://back-project-conceito.herokuapp.com/${user.token}`
 
         axios
             .delete(URL, config)

@@ -29,7 +29,7 @@ function Admin() {
     function register(event) {
 
         event.preventDefault();
-        const promisse = axios.post("https://git.heroku.com/back-project-conceito.git/admin", admin);
+        const promisse = axios.post("https://back-project-conceito.herokuapp.com/admin", admin);
         promisse.then(response => {
             const { data } = response;
             setUser({ token: data });
