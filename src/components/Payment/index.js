@@ -38,24 +38,45 @@ function Payment() {
         })
     }, []);
 
+    /*
     function buy(event) {
         event.preventDefault();
         alert("Compra realizada com sucesso!");
         localStorage.clear();
         navigate("/")
-    }
+    }*/
 
     function addAddress() {
         alert("Por favor, cadastre o seu endereço")
     }
 
     const storage = JSON.parse(localStorage.getItem('userLocal'));
-    console.log(storage.length)
+    let myObj = JSON.parse(localStorage.getItem('userLocal')) !== null ? storage : [];
 
     for (let i = 0; i < storage.length; i++) {
         total = total + parseInt(storage[i].price);
-        console.log(total)
     }
+
+    function postPayment(event) {
+
+        event.preventDefault();
+
+        const promisse = axios.post("https://back-project-conceito.herokuapp.com/payment", {myObj, payment},
+        config);
+        promisse.then(() => {
+            alert("Compra realizada com sucesso!");
+            localStorage.clear();
+            navigate("/")
+        });
+        promisse.catch(() => {
+            warning();
+        })
+
+        function warning() {
+            alert('Não foi possível executar a ação');
+        }
+    }
+
 
     return address.length === 0 ? (
         <>
@@ -80,21 +101,19 @@ function Payment() {
                                     <p>Tamanho {item.size}</p>
                                     <p>Quantidade 1</p>
                                     <p>Valor do pedido: R$ {item.price}</p>
-                                    {console.log(total)}
                                 </div>
                             )
                         })}
                         <p >Frete: R$20,00</p>
                         <p className="total">Total: R$ {total},00</p>
-                        {console.log(total)}
                     </div>
                     <h2>Pagamento</h2>
                     <form>
                         <div className="payment-conditions">
-                            <input type="text" placeholder="Nome do titular" onChange={e => setPayment({ ...payment, name: e.target.value })}></input>
-                            <input type="number" placeholder="Número do cartão" onChange={e => setPayment({ ...payment, number: e.target.value })}></input>
-                            <input type="number" placeholder="Validade" onChange={e => setPayment({ ...payment, validity: e.target.value })}></input>
-                            <input type="number" placeholder="CVV" minLength="3" maxLength="3" onChange={e => setPayment({ ...payment, cvv: e.target.value })}></input>
+                            <input type="text" placeholder="Nome do titular" required onChange={e => setPayment({ ...payment, name: e.target.value })}></input>
+                            <input type="number" placeholder="Número do cartão" required onChange={e => setPayment({ ...payment, number: e.target.value })}></input>
+                            <input type="date" placeholder="Validade" required onChange={e => setPayment({ ...payment, validity: e.target.value })}></input>
+                            <input type="text" placeholder="CVV" maxLength="3" minLength="3" required onChange={e => setPayment({ ...payment, cvv: e.target.value })}></input>
                             <button onClick={() => { addAddress() }}>Comprar</button>
                         </div>
                     </form>
@@ -134,7 +153,7 @@ function Payment() {
                         <p className="total">Total: R$ {total + 20},00</p>
                     </div>
                     <h2>Pagamento</h2>
-                    <form onSubmit={buy}>
+                    <form onSubmit={postPayment}>
                         <div className="payment-conditions">
                             <input type="text" placeholder="Nome do titular" onChange={e => setPayment({ ...payment, name: e.target.value })}></input>
                             <input type="number" placeholder="Número do cartão" onChange={e => setPayment({ ...payment, number: e.target.value })}></input>
