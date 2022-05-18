@@ -2,19 +2,15 @@ import "./style.css";
 import Header from "../Header";
 import Footer from "../Footer";
 import Bag from "../Bag";
-import { Link, useNavigate } from "react-router-dom";
+import { Link  } from "react-router-dom";
 import UserContext from "../../UserContext";
 import { useContext } from 'react';
-import UserContext from "../../UserContext";
 
 function Shopping() {
 
     const { user } = useContext(UserContext);
-    const navigate = useNavigate();
-
     const storage = JSON.parse(localStorage.getItem('userLocal'));
     let myObj = JSON.parse(localStorage.getItem('userLocal')) !== null ? storage : [];
-    const { user } = useContext(UserContext);
 
     if (user) {
         if (myObj.length === 0) {

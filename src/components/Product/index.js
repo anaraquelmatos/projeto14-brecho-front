@@ -28,7 +28,7 @@ function Product() {
     });
 
     useEffect(() => {
-        const promisse = axios.get(`http://localhost:5000/product/${idProduct}`);
+        const promisse = axios.get(`https://git.heroku.com/back-project-conceito.git/product/${idProduct}`);
         promisse.then(response => {
             const { data } = response;
             setItems([...items, data]);
