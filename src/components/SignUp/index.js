@@ -20,7 +20,7 @@ function SignUp() {
     function register(event) {
         event.preventDefault();
         setLoad(true);
-        const promisse = axios.post("http://localhost:5000/sign-up", userInfos);
+        const promisse = axios.post("https://git.heroku.com/back-project-conceito.git/sign-up", userInfos);
         promisse.then(() => {
             setLoad(false);
             navigate("/");

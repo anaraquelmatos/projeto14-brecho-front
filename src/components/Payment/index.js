@@ -30,10 +30,10 @@ function Payment() {
     };
 
     useEffect(() => {
-        const promisse = axios.get(`http://localhost:5000/payment`, config);
+        const promisse = axios.get(`https://git.heroku.com/back-project-conceito.git/payment`, config);
         promisse.then(response => {
             const { data } = response;
-            setAddress([...address, data]);
+            setAddress(data);
             setCount(count + 1);
         })
     }, []);
@@ -53,11 +53,11 @@ function Payment() {
     console.log(storage.length)
 
     for (let i = 0; i < storage.length; i++) {
-        total = total + storage[i].price
+        total = total + parseInt(storage[i].price);
         console.log(total)
     }
 
-    return Object.values(address).length === 0 ? (
+    return address.length === 0 ? (
         <>
             <Header />
             <main>
@@ -65,7 +65,7 @@ function Payment() {
                     <h2>Dados de envio</h2>
                     <Link to={`/address`}>
                         <div className="address">
-                            <p>Cadastre o seu endereço</p>
+                            <h3>Cadastre o seu endereço</h3>
                         </div>
                     </Link>
                     <h2>Seu pedido</h2>

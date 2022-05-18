@@ -32,7 +32,7 @@ function Address() {
 
         event.preventDefault();
 
-        const promisse = axios.put("http://localhost:5000/address", address, config);
+        const promisse = axios.put("https://git.heroku.com/back-project-conceito.git/address", address, config);
         promisse.then(() => {
             navigate(`/payment`);
         });

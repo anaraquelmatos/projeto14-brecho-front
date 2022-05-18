@@ -14,7 +14,7 @@ function Male() {
     useEffect(() => {
 
         setValidation(true)
-        const promisse = axios.get("http://localhost:5000");
+        const promisse = axios.get("https://git.heroku.com/back-project-conceito.git/");
         promisse.then(response => {
             const { data } = response;
             setItems(data);
