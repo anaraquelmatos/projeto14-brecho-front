@@ -21,9 +21,9 @@ function Payment() {
 
     const [count, setCount] = useState(0);
 
-    const [total, setTotal] = useState(0);
-
     const navigate = useNavigate();
+
+    let total = 0;
 
     const config = {
         headers: { Authorization: `Bearer ${user.token}` }
@@ -41,15 +41,21 @@ function Payment() {
     function buy(event) {
         event.preventDefault();
         alert("Compra realizada com sucesso!");
+        localStorage.clear();
         navigate("/")
     }
 
-    function addAddress(){
+    function addAddress() {
         alert("Por favor, cadastre o seu endereço")
     }
 
     const storage = JSON.parse(localStorage.getItem('userLocal'));
-    console.log(storage)
+    console.log(storage.length)
+
+    for (let i = 0; i < storage.length; i++) {
+        total = total + storage[i].price
+        console.log(total)
+    }
 
     return Object.values(address).length === 0 ? (
         <>
@@ -74,11 +80,13 @@ function Payment() {
                                     <p>Tamanho {item.size}</p>
                                     <p>Quantidade 1</p>
                                     <p>Valor do pedido: R$ {item.price}</p>
+                                    {console.log(total)}
                                 </div>
                             )
                         })}
                         <p >Frete: R$20,00</p>
-                        <p className="total">Total: R${total},00</p>
+                        <p className="total">Total: R$ {total},00</p>
+                        {console.log(total)}
                     </div>
                     <h2>Pagamento</h2>
                     <form>
@@ -87,7 +95,7 @@ function Payment() {
                             <input type="number" placeholder="Número do cartão" onChange={e => setPayment({ ...payment, number: e.target.value })}></input>
                             <input type="number" placeholder="Validade" onChange={e => setPayment({ ...payment, validity: e.target.value })}></input>
                             <input type="number" placeholder="CVV" minLength="3" maxLength="3" onChange={e => setPayment({ ...payment, cvv: e.target.value })}></input>
-                            <button onClick={() => {addAddress()}}>Comprar</button>
+                            <button onClick={() => { addAddress() }}>Comprar</button>
                         </div>
                     </form>
                 </div>
@@ -123,7 +131,7 @@ function Payment() {
                             )
                         })}
                         <p >Frete: R$20,00</p>
-                        <p className="total">Total: R${total},00</p>
+                        <p className="total">Total: R$ {total + 20},00</p>
                     </div>
                     <h2>Pagamento</h2>
                     <form onSubmit={buy}>
