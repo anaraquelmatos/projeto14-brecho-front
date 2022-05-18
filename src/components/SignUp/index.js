@@ -43,11 +43,11 @@ function SignUp() {
                     <p>JÁ SOU CLIENTE CONCEITO</p>
                 </Link>
                 <form className="sign-up-form" onSubmit={register}>
-                    <input type="text" placeholder="Nome" onChange={e => setUserInfos({ ...userInfos, name: e.target.value })}></input>
-                    <input type="text" placeholder="Email" onChange={e => setUserInfos({ ...userInfos, email: e.target.value })}></input>
-                    <input type="text" placeholder="CPF" maxLength="11" minLength="11" onChange={e => setUserInfos({ ...userInfos, CPF: e.target.value })}></input>
-                    <input type="password" placeholder="Senha" onChange={e => setUserInfos({ ...userInfos, password: e.target.value })}></input>
-                    <input type="password" placeholder="Repetir Senha" onChange={e => setUserInfos({ ...userInfos, passwordConfirmation: e.target.value })}></input>
+                    <input type="text" placeholder="Nome" required onChange={e => setUserInfos({ ...userInfos, name: e.target.value })}></input>
+                    <input type="email" placeholder="Email" required onChange={e => setUserInfos({ ...userInfos, email: e.target.value })}></input>
+                    <input type="text" placeholder="CPF" maxLength="11" minLength="11" required onChange={e => setUserInfos({ ...userInfos, CPF: e.target.value })}></input>
+                    <input type="password" placeholder="Senha" maxLength="10" minLength="6" required onChange={e => setUserInfos({ ...userInfos, password: e.target.value })}></input>
+                    <input type="password" placeholder="Repetir Senha" maxLength="10" minLength="6" required onChange={e => setUserInfos({ ...userInfos, passwordConfirmation: e.target.value })}></input>
                     <button type="submit">Cadastrar</button>
                     <Link to={`/sign-in`}>
                         <p>QUERO FAZER O LOGIN</p>
